@@ -11,7 +11,7 @@ Esta es una version con super poderes del proyecto de pruebas que fue el [Sparta
 
 ## Que se usará
 ### Para el Frontend
-* [SASS][](http://sass-lang.com/) como el lenguaje de estilos predilecto
+* [SASS](http://sass-lang.com/) como el lenguaje de estilos predilecto
 * [Materialize](http://materializecss.com) como framework FrontEnd preferido
 * [Include Media ](include-media.com) para mejores medias Queries en SASS
 * [Gulp](http://gulpjs.com/) para la agilizacion y automatizacion de tareas (WebStarterKit version from google)
