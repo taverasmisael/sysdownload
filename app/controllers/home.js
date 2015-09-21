@@ -1,20 +1,12 @@
 'use strict';
 var express = require('express'),
-  router = express.Router(),
-  mongoose = require('mongoose'),
-  Article = mongoose.model('Article');
+  router = express.Router();
 
 module.exports = function (app) {
-  app.use('/', router);
-};
-
-router.get('/', function (req, res, next) {
-  Article.find(function (err, articles) {
-    if (err) {return next(err);}
+  app.use('*', function (req, res) {
     res.render('index', {
       title: 'SysDownload',
-      subtitle: 'Un metodo inteligente :D',
-      articles: articles
+      subtitle: 'Servidor Práctico de Archivos'
     });
   });
-});
+};
