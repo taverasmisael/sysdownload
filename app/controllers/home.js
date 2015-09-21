@@ -2,19 +2,19 @@
 var express = require('express'),
   router = express.Router(),
   mongoose = require('mongoose'),
-  Article = mongoose.model('Article');
+  Program = mongoose.model('Program');
 
 module.exports = function (app) {
   app.use('/', router);
 };
 
 router.get('/', function (req, res, next) {
-  Article.find(function (err, articles) {
+  Program.find(function (err, Programas) {
     if (err) {return next(err);}
     res.render('index', {
       title: 'SysDownload',
       subtitle: 'Un metodo inteligente :D',
-      articles: articles
+      programas: Programas
     });
   });
 });
