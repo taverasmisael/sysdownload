@@ -1,1 +1,6 @@
-body{padding:50px;font:14px "Lucida Grande",Helvetica,Arial,sans-serif}a{color:#FF5050;text-decoration:none}
+/*!
+Sysdownload StyleSheet - http://github.com/taverasmisael/Sysdownload
+Licensed under the Apache License 2.0 - http://opensource.org/licenses/Apache
+
+Copyright (c) 2015 Misael Taveras
+*/.container{width:90%}.auto-size{width:auto!important;height:auto!important}.nav-wrapper{transition:all .5s ease-in}.navbar-fixed,.search-box{overflow:hidden}.search-box{width:30px;transition:width 350ms cubic-bezier(.4,0,1,1)}.search-box a{display:inline-block}.search-box a span{border-radius:50%;line-height:30px;width:30px;height:30px;padding-left:3px}.search-box a span:hover{background:rgba(255,255,255,.2)}.search-box .searcher{display:inline-block;position:relative}.search-box .searcher .material-icons{position:absolute;top:1.5rem;right:0;font-size:1em}.search-box.expanded{width:190px;transition:width 450ms cubic-bezier(.4,0,1,1)}
