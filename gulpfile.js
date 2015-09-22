@@ -102,7 +102,7 @@ gulp.task('wiredep', function() {
         .pipe($.livereload());
 });
 gulp.task('watch', function() {
-    gulp.watch(['./public/styles/**/*.{sass,css,scss}'], ['styles']);
+    gulp.watch(['./public/styles/**/*.sass', './public/styles/**/*.scss'], ['styles']);
     gulp.watch(['app/images/**/*'], ['images']);
     gulp.watch(['./public/scripts/**/*.js', 'app/**/*.js'], ['jshint']);
 });
