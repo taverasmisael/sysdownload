@@ -1,6 +1,8 @@
 extends layout
 
 block content
+  include ./partials/navbar.jade
+  block navbar
   h1= title
     i.mdi.mdi-bell
   p Bienvenido a #{title}: #{subtitle}
