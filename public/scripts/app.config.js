@@ -1,20 +1,21 @@
 angular.module('SysDownload')
-      .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', configFunction]);
+      .constant('TMPDIR', 'templates/')
+      .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 'TMPDIR', configFunction]);
 
-function configFunction ($stateProvider, $urlRouterProvider, $locationProvider) {
+function configFunction ($stateProvider, $urlRouterProvider, $locationProvider, TMPDIR) {
   $locationProvider.html5Mode(true);
   $urlRouterProvider.otherwise('');
 
   $stateProvider
     .state('home', {
       url: '/',
-      templateUrl: 'main.tpl.html',
+      templateUrl: TMPDIR+'main.tpl.html',
       controller: 'HomeController',
       controllerAs: 'HomeCtrl'
     })
     .state('category', {
       url: '/category/',
-      templateUrl: 'category.tpl.html',
+      templateUrl: TMPDIR+'category.tpl.html',
       controller: 'CategoryController',
       controllerAs: 'CatController'
     })
