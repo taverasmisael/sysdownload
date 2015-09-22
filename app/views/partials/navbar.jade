@@ -1,3 +1,42 @@
 block navbar
-  nav
-    h1 HOLIS
+  //Navbar starts here
+  .navbar-fixed
+      ul#nav-mobile.side-nav
+        li
+          a(href='#') Sass
+        li
+          a(href='#') Components
+        li
+          a(href='#') JavaScript
+      nav
+        .nav-wrapper.indigo.z-depth-3
+          a.button-collapse(href='#', data-activates='nav-mobile')
+            i.mdi-navigation-menu
+          ul#nav-mobile.left.hide-on-med-and-down
+            li
+              a(href='#') Sass
+            li
+              a(href='#') Components
+            li
+              a(href='#') JavaScript
+          ul.center
+            li.search
+              form.center
+                .input-field
+                  input#search(type='search', placeholder='Buscar por Nombre', required='')
+                  label(for='search')
+                    i.mdi-action-search
+                  i.mdi-navigation-close
+          ul.right
+            li
+              a.user.dropdown-button(href='#', data-activates='userDropdown')
+                img.circle.responsive-img(src='http://placehold.it/30', alt='UserProfile')
+                span El Usuario
+                  i.mdi-navigation-expand-more.small.right
+        ul#userDropdown.auto-size.dropdown-content.indigo.darken-1
+          li
+            a.white-text(href='#!') Cambiar Contraseña
+              i.mdi-action-lock.tiny
+          li
+            a.white-text(href='#!') Salir
+              i.mdi-action-exit-to-app.tiny
