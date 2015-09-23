@@ -5,7 +5,8 @@
 
     function HomeCtrl ($scope) {
       var vm = this;
-      vm.programas = [
+      var CARDCOLORS = ['materialize-red darken-1', 'pink darken-2', 'deep-purple darken-2', 'blue darken-1', 'cyan darken-2', 'green darken-3', 'yellow darken-3', 'orange darken-2', 'brown darken-3', 'blue-grey darken', 'red darken-2', 'purple darken-3', 'light-blue darken-2', 'teal darken-3'];
+      var programas = [
         {
           _id: '0001',
           info: {
@@ -83,5 +84,11 @@
           updatedAt: new Date()
         }
       ];
+
+      for (var i = 0; i < programas.length; i += 1) {
+        programas[i].cardColor = CARDCOLORS[Math.floor(Math.random() * CARDCOLORS.length)];
+      }
+      vm.programas = programas;
+      console.log(vm.programas);
     }
 })();
