@@ -3,7 +3,4 @@ extends layout
 block content
   include ./partials/navbar.jade
   block navbar
-  h1= title
-    i.mdi.mdi-bell
-  p Bienvenido a #{title}: #{subtitle}
-  a(href="http://github.com/taverasmisael/sysdownload", target="_blank") Encuentra este proyecyo en github
+  .container(ui-view)

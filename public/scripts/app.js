@@ -5,5 +5,5 @@
     *
     * That's the main Application
     */
-    angular.module('SysDownload', ['ngAnimate', 'ui.router.util', 'ngStorage']);
+    angular.module('SysDownload', ['ngAnimate', 'ui.router', 'ngStorage']);
 })();

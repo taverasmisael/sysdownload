@@ -1,10 +1,21 @@
 (function(){
     'use strict';
     var doc = $(document),
-        searchLabel = $('.search-box a');
+        searchBox = $('.search-box'),
+        searchTrigger = $('.search-box a'),
+        searcher = $('.searcher'),
+        searchInput = searcher.find('input[type="search"]'),
+        searchCleaner = searcher.find('.material-icons');
 
-    searchLabel.on('click', function (event) {
+    searchTrigger.on('click', function (event) {
       event.preventDefault();
-      searchLabel.parent().toggleClass('expanded');
+      searchBox.toggleClass('expanded');
     });
+    searchCleaner.on('click', function (event) {
+      event.preventDefault();
+      if (searchInput.val() === '') {
+        searchTrigger.trigger('click');
+      }
+      searchInput.val('');
+    })
 })();
