@@ -5,6 +5,7 @@ html(lang='es')
     block js
       if ENV_DEVELOPMENT
         script(src='http://localhost:35729/livereload.js')
-  body
+  body(ng-app="SysDownload")
+    block navbar
     block content
     include partials/footer.jade
