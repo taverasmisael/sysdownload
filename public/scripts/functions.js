@@ -1,7 +1,6 @@
 (function(){
     'use strict';
-    var doc = $(document),
-        searchBox = $('.search-box'),
+    var searchBox = $('.search-box'),
         searchTrigger = $('.search-box a'),
         searcher = $('.searcher'),
         searchInput = searcher.find('input[type="search"]'),
@@ -17,5 +16,5 @@
         searchTrigger.trigger('click');
       }
       searchInput.val('');
-    })
+    });
 })();

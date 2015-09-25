@@ -20,7 +20,7 @@
           templateUrl: TMPDIR+'category.tpl.html',
           controller: 'CategoryController',
           controllerAs: 'CatController'
-        })
+        });
     }
 
 })();
