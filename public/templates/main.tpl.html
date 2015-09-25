@@ -6,15 +6,15 @@
       </ul>
       <div ng-class="program.cardColor" class="card waves-effect waves-light program">
           <a class="dropdown-button" data-beloworigin="true" href="#" data-activates="programsMenu{{program._id}}"><i class="material-icons small white-text">more_vert</i></a>
-          <div class="card-content white-text">
-              <div class="program-header">
-                  <h1 class="center-align" ng-bind="::program.info.name | limitTo: 1"></h1>
+          <div class="card-content valign-wrapper">
+              <div class="program-header  valign-wrapper">
+                  <h1 ng-bind="::program.info.name | limitTo: 1"></h1>
+                  <p class="file truncate">
+                    <strong class="truncate" ng-bind="::program.info.name"></strong>
+                  </p>
               </div>
               <div class="program-body">
-                  <p class="file truncate">
-                    <strong class="truncate center-align" ng-bind="::program.info.name"></strong>
-                  </p>
-                  <div class="divider"></div>
+                <div class="divider"></div>
                   <p class="meta">
                     <small class="truncate">
                       <i class="material-icons tiny">save</i> {{::program.file.size}} <i class="material-icons tiny">label_outline</i> {{::program.info.category | limitTo: 8}} <i class="material-icons tiny">star</i> {{::program.meta.ratting}} Descargas

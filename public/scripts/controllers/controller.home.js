@@ -5,11 +5,11 @@
 
     function HomeCtrl ($scope, Programas) {
       var vm = this;
-      var CARDCOLORS = ['materialize-red darken-1', 'pink darken-2', 'deep-purple darken-2', 'blue darken-1', 'cyan darken-2', 'green darken-3', 'yellow darken-3', 'orange darken-2', 'brown darken-3', 'blue-grey darken', 'red darken-2', 'purple darken-3', 'light-blue darken-2', 'teal darken-3'];
+      var CARDCOLORS = ['pink darken-2', 'deep-purple darken-2', 'blue darken-1', 'cyan darken-2', 'green darken-1', 'yellow darken-3', 'orange darken-2', 'brown darken-3', 'blue-grey darken-3', 'red darken-2', 'purple darken-3', 'light-blue darken-2', 'teal darken-3'];
 
       Programas.query().$promise.then(function (data) {
         var programas = data;
-        vm.programas = programas
+        vm.programas = programas;
       }).then(function () {
         for (var i = 0; i < vm.programas.length; i += 1) {
           vm.programas[i].cardColor = CARDCOLORS[Math.floor(Math.random() * CARDCOLORS.length)];

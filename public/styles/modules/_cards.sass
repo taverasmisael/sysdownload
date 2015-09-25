@@ -1,4 +1,13 @@
 .programs-container
+  margin-top: 1rem
+  .program
+    color: white
+    max-width: 100%
+    min-width: 100%
+    min-height: 265px
+    max-height: 265px
+    height: 265px
+    margin: 0
   .card
     & .dropdown-button
       z-index: 5
@@ -10,11 +19,19 @@
         height: 30px
         line-height: 30px
     &-content
-      .program-file
-        h1
-          margin: 0
-      .meta, .file
+      height: 100%
+      text-align: center
+      h1
+        margin: 0
+      .program-header, .program-body
+        width: 100%
+      .program-header
+        flex: 1
+      .program-body .meta
         padding: 1em 0
         i
           vertical-align: middle
-
+    .valign-wrapper
+      flex-direction: column
+      justify-content: center
+      align-items: center
