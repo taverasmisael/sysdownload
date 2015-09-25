@@ -28,8 +28,8 @@ router.get('/api/programs/', function (req, res) {
 
 // Call an specific program byID. Returns one program
 router.get('/api/programs/:programId', function (req, res) {
-    console.log('Especific Program: ', req.params.programId);
-    var id = req.programId;
+    var id = req.params.programId;
+    console.log('Especific Program: ', id);
     Program.findById(id, function(err, programa) {
         if (err) {
             console.log('Ocurrio un error encontrando el programa: "', id, '"\n ', err);
@@ -50,7 +50,7 @@ router.get('/api/category/:categoryName', function(req, res) {
     var catName = req.params.categoryName;
     console.log(catName);
     Program.find({
-      "info.category": catName
+      'info.category': catName
     }, function(err, programas) {
         if (err) {
             console.log('Ocurrio un error al acceder a la categoria: "', catName, '"\n', err);
@@ -104,7 +104,7 @@ router.put('/api/programs/:programId', function(req, res) {
             console.log('Ocurrio un error actualizando el programa: "', id, '"\n', err);
             res.send(err);
         }
-        console.log('Programa: ', programa.nombre, ' actualizado.');
+        console.log('Programa: ', programa, ' actualizado.');
         Program.find(function(err, programas) {
             if (err) {
                 console.log('Ocurrio un error Accediento a los programas: \n', err);
