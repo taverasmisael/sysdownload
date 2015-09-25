@@ -1,6 +1,6 @@
 'use strict';
 var express = require('express'),
-  router = express.Router();
+    router = express.Router();
 
 module.exports = function (app) {
   app.use('*', function (req, res) {
