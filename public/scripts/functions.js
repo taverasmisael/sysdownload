@@ -17,4 +17,11 @@
       }
       searchInput.val('');
     });
+    var cardsInterval = setInterval(function () {
+      if ($('.card.program').length) {
+        clearInterval(cardsInterval);
+        $('.dropdown-button').dropdown();
+        console.log($('.dropdown-button'));
+      }
+    }, 1000);
 })();

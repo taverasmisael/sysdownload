@@ -1,13 +1,14 @@
 .programs-container
   margin-top: 1rem
   .program
-    color: white
-    max-width: 100%
-    min-width: 100%
-    min-height: 265px
-    max-height: 265px
+    color: #424242
     height: 265px
     margin: 0
+    max-height: 265px
+    max-width: 100%
+    min-height: 265px
+    min-width: 100%
+    overflow: visible
   .card
     & .dropdown-button
       z-index: 5
@@ -21,6 +22,8 @@
     &-content
       height: 100%
       text-align: center
+      &.valign-wrapper
+        display: flex
       h1
         margin: 0
       .program-header, .program-body
