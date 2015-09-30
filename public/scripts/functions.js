@@ -1,10 +1,7 @@
 (function(){
     'use strict';
     var searchBox = $('.search-box'),
-        searchTrigger = $('.search-box a'),
-        searcher = $('.searcher'),
-        searchInput = searcher.find('input[type="search"]'),
-        searchCleaner = searcher.find('.material-icons');
+        searchTrigger = $('.search-box a');
 
     searchTrigger.on('click', function (event) {
       event.preventDefault();
