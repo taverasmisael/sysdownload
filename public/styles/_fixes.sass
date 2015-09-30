@@ -11,3 +11,15 @@
 .dropdown-content i
   vertical-align: middle
   display: inline
+.fixed-action-btn
+  @media #{$small-and-down}
+    bottom: 3rem
+    right: 3rem
+  @media #{$medium-and-up}
+    top: 5rem
+    right: 3rem
+
+.brand-logo
+  @media #{$small-and-down}
+    left: 1rem !important
+    transform: translateX(1rem) !important
