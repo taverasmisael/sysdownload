@@ -2,7 +2,10 @@
     'use strict';
     angular.module('SysDownload')
             .constant('APIURI', '/api/programs/:programId')
-            .factory('Programas', ['$resource', 'APIURI', ProgramasFactory]);
+            // Factoria para acceder a la API y regresar la lista de programas en la base de datos
+            .factory('Programas', ['$resource', 'APIURI', ProgramasFactory])
+            // Factoria para compartir entre controladores, los terminos de busqueda de los programas
+            .factory('Busqueda', BusquedaFactory);
 
     function ProgramasFactory ($resource, APIURI) {
       var ProgramasMethods = {
@@ -41,5 +44,13 @@
       };
 
       return $resource(APIURI, {programId: '@programId'}, ProgramasMethods);
+    }
+
+    function BusquedaFactory() {
+      return {
+        filter: {
+          searchFilter: ''
+        }
+      };
     }
 })();
