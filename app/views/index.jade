@@ -3,4 +3,14 @@ extends layout
 block content
   include ./partials/navbar.jade
   block navbar
-  .container(ui-view)
+  main.container(ui-view)
+    .valign-wrapper
+      .valign
+        .preloader-wrapper.big.active
+          .spinner-layer.spinner-blue
+            .circle-clipper.left
+              .circle
+            .gap-patch
+              .circle
+            .circle-clipper.right
+              .circle
