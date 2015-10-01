@@ -29,7 +29,7 @@
           url: 'api/category/:categoryName',
           method: 'GET',
           params: {categoryName: '@categoryName'},
-          isArray: true
+          isArray: false
         },
         create: {
           method: 'POST',

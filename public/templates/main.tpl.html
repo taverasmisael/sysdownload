@@ -26,7 +26,8 @@
   </div>
 </div>
 <div class="fixed-action-btn">
-  <a class="btn-floating btn-large red darken-1 waves-effect waves-light">
+  <a ng-click="HomeCtrl.openCreate()" class="btn-floating btn-large red darken-1 waves-effect waves-light">
     <i class="large material-icons">add</i>
   </a>
 </div>
+<div ng-include="'/templates/modals/modal.creation.html'"></div>
