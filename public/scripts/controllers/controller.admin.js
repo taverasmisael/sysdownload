@@ -24,6 +24,6 @@
       $scope.$on('$includeContentLoaded', function () {
         /*jshint camelcase: false */
         $('select').material_select();
-      })
+      });
     }
 })();
