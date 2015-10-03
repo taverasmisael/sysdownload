@@ -8,16 +8,16 @@
             <form id="creationForm" class="col s12" ng-submit="AdminCtrl.crearPrograma(AdminCtrl.newProgram)">
                 <div class="row">
                     <div class="input-field col s6">
-                        <input maxlength="30" type="text" id="newProgramIName" class="validate" placeholder="Nombre del Programa" ng-model="AdminCtrl.newProgram.name">
+                        <input maxlength="30" type="text" id="newProgramIName" class="validate" placeholder="Nombre del Programa" ng-model="AdminCtrl.newProgram.name" required>
                         <label class="active" for="newProgramIName">Nombre</label>
                     </div>
                     <div class="file-field input-field col s6">
                         <div class="btn red lighten-1">
                             <span>File</span>
-                            <input type="file" ng-model="AdminCtrl.newProgram.file.path">
+                            <input type="file" ng-model="AdminCtrl.newProgram.file.path" required>
                         </div>
                         <div class="file-path-wrapper">
-                            <input type="text" class="file-path validate" placeholder="Selecciona un archivo" disabled>
+                            <input type="text" class="file-path validate" placeholder="Selecciona un archivo" disabled required>
                         </div>
                     </div>
                 </div>
@@ -34,7 +34,7 @@
                         <label>Tipo de Programa</label>
                       </div>
                 </div>
-              <button type="submit" class="waves-effect waves-light btn-flat btn-large col s10 offset-s1"><i class="material-icons">save</i> Guardar</button>
+              <button type="submit" class="waves-effect waves-light btn-flat btn-gigant col s4 offset-s8"><i class="material-icons">save</i> Guardar</button>
           </form>
         </div>
     </div>
