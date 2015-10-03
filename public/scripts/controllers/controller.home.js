@@ -9,10 +9,7 @@
       vm.download = descargar;
       vm.openCreate = openCreationModal;
 
-      Programas.query().$promise.then(function (data) {
-        var programas = data;
-        vm.programas = programas;
-      });
+      vm.programas = Programas.all;
 
       // Funcionalidades del Controlador
       function descargar (programaNombre) {

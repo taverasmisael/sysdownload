@@ -6,18 +6,16 @@
     function AdminCtrl ($scope, Programas) {
       var vm = this;
       vm.crearPrograma = createProgram;
-      Programas.getCategories().$promise.then(function (cats) {
-        vm.categories = cats;
-      });
+      // API.getCategories().$promise.then(function (cats) {
+      //   vm.categories = cats;
+      // });
 
       // Funcionalidades del Controlador
       function createProgram (program) {
-        var newProgram = {programa: program};
-        Programas.create(newProgram).$promise.then(function () {
-          Materialize.toast('Creado ' + vm.newProgram.name, 3500);
+          var nombrePrograma = Programas.create(program);
           vm.newProgram = '';
+          Materialize.toast('Creado ' + nombrePrograma, 3500);
           $('#creationModal').closeModal();
-        });
       }
 
       // Funciones internas del Controlador
