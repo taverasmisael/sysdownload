@@ -7,9 +7,12 @@ Licensed under the Apache License 2.0 - http://opensource.org/licenses/Apache
 Copyright (c) 2015 Misael Taveras
 */
 
-@import "variables";
+// Vendors
 @import "color";
+
+// My Own Modules
+@import "variables";
 @import "fixes";
 @import "modules/navbar";
 @import "modules/cards";
-
+@import "modules/animation";

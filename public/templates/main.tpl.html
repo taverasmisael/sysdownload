@@ -1,5 +1,5 @@
 <div class="row programs-container">
-  <div class="col s12 m6 l3 program" ng-repeat="program in HomeCtrl.programas | filter: HomeCtrl.filter.searchFilter track by $index ">
+  <div class="col s12 m6 l3 program" ng-repeat="program in HomeCtrl.programas | filter: HomeCtrl.filter.searchFilter:strict track by program._id ">
       <ul id="programsMenu{{program._id}}" class="auto-size dropdown-content white">
           <li><a href="#" class="grey-text text-darken-3"><i class="material-icons">mode_edit</i>Editar</a></li>
           <li><a href="#" class="grey-text text-darken-3"><i class="material-icons materialize-red-text text-lighten-1">delete</i>Eliminar</a></li>
