@@ -1,20 +1,53 @@
 .programs-container
-  .card
-    & .dropdown-button
-      z-index: 5
-      position: absolute
-      right: 0
-      top: 5%
-      i
-        width: 30px
-        height: 30px
-        line-height: 30px
-    &-content
-      .program-file
+  margin-top: 1rem
+  .program
+    @extend %animated
+    will-change: transform
+    &.ng-enter, &.ng-move
+      @extend %fadeInUp
+    &.ng-move
+      animation-delay: 0ms !important
+    &.ng-leave
+      @extend %fandeOutDown
+    @each $num, $color in $card-colors
+      &:nth-child(#{$num}n)
+        animation-delay: unquote($num * 150 + "ms")
+        .program-color
+          color: #{$color}
+
+    .card
+      color: #424242
+      height: 265px
+      max-height: 265px
+      max-width: 100%
+      min-height: 265px
+      min-width: 100%
+      overflow: visible
+      & .dropdown-button
+        z-index: 5
+        position: absolute
+        right: 0
+        top: 5%
+        i
+          width: 30px
+          height: 30px
+          line-height: 30px
+      &-content
+        height: 100%
+        text-align: center
+        &.valign-wrapper
+          display: flex
         h1
           margin: 0
-      .meta, .file
-        padding: 1em 0
-        i
-          vertical-align: middle
-
+        .program-header, .program-body
+          width: 100%
+        .program-header
+          flex: 1
+        .program-body .meta
+          padding: 1em 0
+          i
+            vertical-align: middle
+      .valign-wrapper
+        flex-direction: column
+        justify-content: center
+        align-items: center

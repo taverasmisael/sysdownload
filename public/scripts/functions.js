@@ -1,20 +1,16 @@
 (function(){
     'use strict';
     var searchBox = $('.search-box'),
-        searchTrigger = $('.search-box a'),
-        searcher = $('.searcher'),
-        searchInput = searcher.find('input[type="search"]'),
-        searchCleaner = searcher.find('.material-icons');
+        searchTrigger = $('.search-box a');
 
     searchTrigger.on('click', function (event) {
       event.preventDefault();
       searchBox.toggleClass('expanded');
     });
-    searchCleaner.on('click', function (event) {
-      event.preventDefault();
-      if (searchInput.val() === '') {
-        searchTrigger.trigger('click');
+    var cardsInterval = setInterval(function () {
+      if ($('.card.program').length) {
+        clearInterval(cardsInterval);
+        $('.dropdown-button').dropdown();
       }
-      searchInput.val('');
-    });
+    }, 1000);
 })();

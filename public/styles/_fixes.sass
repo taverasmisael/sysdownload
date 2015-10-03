@@ -1,3 +1,10 @@
+html, body, main
+  height: 100%
+  max-height: 100vh
+  min-height: 100vh
+.valign-wrapper
+  justify-content: center
+  height: 100%
 .container
   width: 90%
 .auto-size
@@ -11,3 +18,37 @@
 .dropdown-content i
   vertical-align: middle
   display: inline
+.fixed-action-btn
+  @media #{$small-and-down}
+    bottom: 3rem
+    right: 3rem
+  @media #{$medium-and-up}
+    top: 5rem
+    right: 3rem
+
+.brand-logo
+  @media #{$small-and-down}
+    left: 1rem !important
+    transform: translateX(1rem) !important
+
+.close
+  // Basic Styles And Positioning
+  color: color("red", "darken-2")
+  position: absolute
+  top: 0.8rem
+  right: 1rem
+  // Perfect Circle for `wave` effect
+  height: 30px
+  line-height: 30px
+  width: 30px
+  border-radius: 50%
+
+// Let's align vertically these icons ;)
+.material-icons
+    vertical-align: middle
+
+// Button fixes and new classes
+.btn
+  &-gigant
+    height: 4.6rem
+    line-height: 4.6rem
