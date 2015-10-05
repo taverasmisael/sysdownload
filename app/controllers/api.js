@@ -4,10 +4,21 @@ var express = require('express'),
     mongoose = require('mongoose'),
     Program = mongoose.model('Program');
 
-var categoryList = {
-    availableCategories: ['Os', 'Crack', 'Ide', 'Seguridad', 'Diseño', 'Utilidades', 'Documento', 'Otros'],
-    defaultCategory: 'Otros'
-};
+var categoryList = [
+    {
+      availableCategories:[
+        {name: 'Os',}
+        {name: 'Crack',}
+        {name: 'Ide',}
+        {name: 'Seguridad',}
+        {name: 'Diseño',}
+        {name: 'Utilidades',}
+        {name: 'Documento',}
+        {name: 'Otros'}
+      ],
+      defaultCategory: 'Otros'
+    }
+];
 
 module.exports = function (app) {
     app.use(router);
@@ -67,14 +78,13 @@ router.post('/api/programs/', function(req, res) {
     var newProgram = req.body.programa;
     var Programa = new Program();
     console.log(req.body);
-    Programa.info.name = newProgram.name;
-    Programa.info.resume = newProgram.resume;
-    Programa.info.category = newProgram.category;
+    Programa.info = newProgram;
     // This `Programa.file will be provider by a promise function
     // that upload the file and returns his file info.
     Programa.file = {
         path: '/programas/defaultPath.exe',
-        mime: 'application/exe'
+        mime: 'application/exe',
+        size: 2048
     };
 
     Programa.save(function(err) {
