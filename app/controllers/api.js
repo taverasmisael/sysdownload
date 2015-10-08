@@ -4,16 +4,18 @@ var express = require('express'),
     mongoose = require('mongoose'),
     Program = mongoose.model('Program');
 
+var maintenance = require('./maintenance');
+
 var categoryList = [
     {
       availableCategories:[
-        {name: 'Os',}
-        {name: 'Crack',}
-        {name: 'Ide',}
-        {name: 'Seguridad',}
-        {name: 'Diseño',}
-        {name: 'Utilidades',}
-        {name: 'Documento',}
+        {name: 'Os'},
+        {name: 'Crack'},
+        {name: 'Ide'},
+        {name: 'Seguridad'},
+        {name: 'Diseño'},
+        {name: 'Utilidades'},
+        {name: 'Documento'},
         {name: 'Otros'}
       ],
       defaultCategory: 'Otros'
@@ -147,3 +149,6 @@ router.delete('/api/programs/:programId', function(req, res) {
         });
     });
 });
+
+
+router.get('/api/maintenance/info/', maintenance);
