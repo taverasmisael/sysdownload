@@ -89,19 +89,19 @@ router.post('/api/programs/', function(req, res) {
         size: 2048
     };
 
-    Programa.save(function(err) {
+    Programa.save(function(err, newP) {
         if (err) {
             console.log('Ocurrio un error salvando el programa (ya esta en el sistema de archivos) \n', err);
             res.send(err);
         }
 
-        Program.find(function(err, programas) {
+        Program.findById(newP.id, function(err, nuevoPrograma) {
             if (err) {
-                console.log('Ocurrio un error Accediento a los programas: \n', err);
+                console.log('Ocurrio un error Accediento al programa: \n', newP);
                 res.send(err);
             }
-
-            res.json(programas);
+            console.log(nuevoPrograma);
+            res.json(nuevoPrograma);
         });
     });
 });
