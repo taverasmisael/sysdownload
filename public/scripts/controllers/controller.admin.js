@@ -1,9 +1,9 @@
 (function(){
     'use strict';
     angular.module('SysDownload')
-                .controller('AdminController' ,['$scope', 'Programas', AdminCtrl]);
+                .controller('AdminController' ,['$scope', 'Programas', 'Upload', AdminCtrl]);
 
-    function AdminCtrl ($scope, Programas) {
+    function AdminCtrl ($scope, Programas, Upload) {
       var vm = this;
       vm.crearPrograma = createProgram;
       // API.getCategories().$promise.then(function (cats) {
@@ -11,11 +11,19 @@
       // });
 
       // Funcionalidades del Controlador
-      function createProgram (program) {
-          var nombrePrograma = Programas.create(program);
-          vm.newProgram = '';
-          Materialize.toast('Creado ' + nombrePrograma, 3500);
-          $('#creationModal').closeModal();
+      function createProgram (file, program) {
+          Upload.upload({
+            url: '/api/programs',
+            data: {files: file, program }
+          }).then(function (nuevo) {
+            console.log(nuevo.data);
+            Materialize.toast('Creado ' + nuevo.data, 3500);
+          }, function (err) {
+            console.log(err);
+          }, function (event) {
+            var percentage = parseInt(100.0* event.loaded / event.total);
+            console.log('Progress: ' + percentage);
+          });
       }
 
       // Funciones internas del Controlador

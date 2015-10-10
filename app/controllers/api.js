@@ -4,7 +4,8 @@ var express = require('express'),
     mongoose = require('mongoose'),
     Program = mongoose.model('Program');
 
-var maintenance = require('./maintenance');
+var maintenance = require('./maintenance'),
+    uploadFile = require('../middlewares/upload');
 
 var categoryList = [
     {
@@ -76,18 +77,17 @@ router.get('/api/category/:categoryName', function(req, res) {
 
 
 // Create a new Program
-router.post('/api/programs/', function(req, res) {
-    var newProgram = req.body.programa;
-    var Programa = new Program();
-    console.log(req.body);
+router.post('/api/programs/', uploadFile, function(req, res) {
+  var newProgram = req.body.programa;
+  //var Programa = new Program();
+  console.log('FI', req.fileInfo);
+  console.log('Pro', newProgram);
+  res.json(true);
+/*
     Programa.info = newProgram;
     // This `Programa.file will be provider by a promise function
     // that upload the file and returns his file info.
-    Programa.file = {
-        path: '/programas/defaultPath.exe',
-        mime: 'application/exe',
-        size: 2048
-    };
+    Programa.file = req.fileInfo;
 
     Programa.save(function(err, newP) {
         if (err) {
@@ -104,6 +104,7 @@ router.post('/api/programs/', function(req, res) {
             res.json(nuevoPrograma);
         });
     });
+*/
 });
 
 // Update an specific program byID

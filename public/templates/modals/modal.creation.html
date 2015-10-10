@@ -5,7 +5,7 @@
         <a href="#" class="modal-close close waves-effect"><i class="material-icons small">close</i></a>
         <div class="divider"></div>
         <div class="row">
-            <form id="creationForm" class="col s12" ng-submit="AdminCtrl.crearPrograma(AdminCtrl.newProgram)">
+            <form id="creationForm" enctype="multipart/form-data" class="col s12" ng-submit="AdminCtrl.crearPrograma(AdminCtrl.currentFile, AdminCtrl.newProgram)">
                 <div class="row">
                     <div class="input-field col s6">
                         <input maxlength="30" type="text" id="newProgramIName" class="validate" placeholder="Nombre del Programa" ng-model="AdminCtrl.newProgram.name" required>
@@ -14,7 +14,7 @@
                     <div class="file-field input-field col s6">
                         <div class="btn red lighten-1">
                             <span>File</span>
-                            <input type="file" ng-model="AdminCtrl.newProgram.file.path" required>
+                            <input type="file" ngf-select ng-model="AdminCtrl.currentFile" required>
                         </div>
                         <div class="file-path-wrapper">
                             <input type="text" class="file-path validate" placeholder="Selecciona un archivo" disabled required>
