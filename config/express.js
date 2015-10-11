@@ -18,9 +18,10 @@ module.exports = function(app, config) {
 
   app.use(favicon(config.root + '/public/images/favicon.ico'));
   app.use(logger('dev'));
-  app.use(bodyParser.json());
+  app.use(bodyParser.json({limit: '5gb'}));
   app.use(bodyParser.urlencoded({
-    extended: true
+    extended: true,
+    limit: '5gb'
   }));
   app.use(cookieParser());
   app.use(compress());

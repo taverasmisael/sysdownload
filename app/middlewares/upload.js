@@ -9,14 +9,16 @@ module.exports = function (req, res, next) {
   console.log('Hola Middleware');
 
   form.uploadDir = path.normalize(config.uploadDir);
+  form.keepExtensions = true;
   form.parse(req, function (err, fields, files) {
     if (err) {throw err;}
 
     console.log(files);
 
-    var programFile = files.files;
-    var tempPath = programFile.path;
-    var targetPath = path.resolve(config.uploadDir + '/' + programFile.name);
+    var date = new Date().toJSON().split('T')[0];
+    var programFile = files.files,
+        tempPath = programFile.path,
+        targetPath = path.resolve(config.uploadDir + '/' + date + '/' + programFile.name);
 
     req.body.programa = {};
     req.body.programa.name = fields['program[name]'];
@@ -28,8 +30,23 @@ module.exports = function (req, res, next) {
       size: programFile.size,
       path: targetPath
     };
-    next();
 
+    fs.stat(path.dirname(targetPath), function (err) {
+      if (err && err.code === 'ENOENT') {
+        fs.mkdir(path.dirname(targetPath), function (err) {
+          if (err) {throw err;}
+          fs.rename(tempPath, targetPath, function (err) {
+              if (err) {throw err;}
+              next();
+          });
+        });
+      } else {
+        fs.rename(tempPath, targetPath, function (err) {
+            if (err) {throw err;}
+            next();
+        });
+      }
+    });
   });
 
 };
