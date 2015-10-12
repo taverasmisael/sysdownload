@@ -4,10 +4,24 @@ var express = require('express'),
     mongoose = require('mongoose'),
     Program = mongoose.model('Program');
 
-var categoryList = {
-    availableCategories: ['Os', 'Crack', 'Ide', 'Seguridad', 'Diseño', 'Utilidades', 'Documento', 'Otros'],
-    defaultCategory: 'Otros'
-};
+var maintenance = require('./maintenance'),
+    uploadFile = require('../middlewares/upload');
+
+var categoryList = [
+    {
+      availableCategories:[
+        {name: 'Os'},
+        {name: 'Crack'},
+        {name: 'Ide'},
+        {name: 'Seguridad'},
+        {name: 'Diseño'},
+        {name: 'Utilidades'},
+        {name: 'Documento'},
+        {name: 'Otros'}
+      ],
+      defaultCategory: 'Otros'
+    }
+];
 
 module.exports = function (app) {
     app.use(router);
@@ -63,35 +77,34 @@ router.get('/api/category/:categoryName', function(req, res) {
 
 
 // Create a new Program
-router.post('/api/programs/', function(req, res) {
-    var newProgram = req.body.programa;
-    var Programa = new Program();
-    console.log(req.body);
-    Programa.info.name = newProgram.name;
-    Programa.info.resume = newProgram.resume;
-    Programa.info.category = newProgram.category;
+router.post('/api/programs/', uploadFile, function(req, res) {
+  var newProgram = req.body.programa;
+  //var Programa = new Program();
+  console.log('FI', req.fileInfo);
+  console.log('Pro', newProgram);
+  res.json(true);
+/*
+    Programa.info = newProgram;
     // This `Programa.file will be provider by a promise function
     // that upload the file and returns his file info.
-    Programa.file = {
-        path: '/programas/defaultPath.exe',
-        mime: 'application/exe'
-    };
+    Programa.file = req.fileInfo;
 
-    Programa.save(function(err) {
+    Programa.save(function(err, newP) {
         if (err) {
             console.log('Ocurrio un error salvando el programa (ya esta en el sistema de archivos) \n', err);
             res.send(err);
         }
 
-        Program.find(function(err, programas) {
+        Program.findById(newP.id, function(err, nuevoPrograma) {
             if (err) {
-                console.log('Ocurrio un error Accediento a los programas: \n', err);
+                console.log('Ocurrio un error Accediento al programa: \n', newP);
                 res.send(err);
             }
-
-            res.json(programas);
+            console.log(nuevoPrograma);
+            res.json(nuevoPrograma);
         });
     });
+*/
 });
 
 // Update an specific program byID
@@ -137,3 +150,6 @@ router.delete('/api/programs/:programId', function(req, res) {
         });
     });
 });
+
+
+router.get('/api/maintenance/info/', maintenance);

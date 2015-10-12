@@ -65,9 +65,11 @@ $RECYCLE.BIN/
 /vendor
 public/components
 
-#Ignoremsos el Directorio de Distribucion por ahora
+# Ignoremsos el Directorio de Distribucion por ahora
 /dist
 
+# Ignoremos la carpeta de programas subidos
+public/programas
 
 # Sublime Generated Files / Temporary Folders
 *.sublime-project

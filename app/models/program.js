@@ -16,6 +16,7 @@ var ProgramSchema = new Schema({
   file: {
     path: {type: String},
     mime: {type: String},
+    size: {type: Number}
   },
   meta: {
     // It should have a user field where we can put the uploader info
