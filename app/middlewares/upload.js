@@ -28,7 +28,7 @@ module.exports = function (req, res, next) {
     req.fileInfo = {
       mime: programFile.type,
       size: programFile.size,
-      path: targetPath
+      path: 'programas/' + date + '/' + path.basename(targetPath)
     };
 
     fs.stat(path.dirname(targetPath), function (err) {
