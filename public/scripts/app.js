@@ -1,9 +1,10 @@
 (function(){
     'use strict';
     /**
-    * SysDownload Module
+    * sysDownload
+ Module
     *
     * That's the main Application
     */
-    angular.module('SysDownload', ['ngAnimate', 'ui.router', 'ngStorage', 'ngResource', 'ngFileUpload']);
+    angular.module('sysDownload', ['ngAnimate', 'ui.router', 'ngStorage', 'ngResource', 'ngFileUpload']);
 })();

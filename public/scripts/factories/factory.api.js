@@ -1,6 +1,6 @@
 (function(){
     'use strict';
-    angular.module('SysDownload')
+    angular.module('sysDownload')
             // Factoria para acceder a la API y regresar la lista de programas en la base de datos
             .factory('API', APIFactory)
             // Factoria para compartir entre controladores, los terminos de busqueda de los programas

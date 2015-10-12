@@ -1,6 +1,6 @@
 (function(){
     'use strict';
-    angular.module('SysDownload')
+    angular.module('sysDownload')
                 .controller('AdminController', AdminController);
 
     AdminController.$inject = ['$scope', 'Programas', 'Upload'];

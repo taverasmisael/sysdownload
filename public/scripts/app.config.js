@@ -1,6 +1,6 @@
 (function(){
     'use strict';
-    angular.module('SysDownload')
+    angular.module('sysDownload')
           .config(configFunction);
 
     configFunction.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider', 'TMPDIR'];
