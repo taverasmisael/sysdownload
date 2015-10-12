@@ -1,8 +1,9 @@
 (function(){
     'use strict';
     angular.module('SysDownload')
-            .service('Programas', ['$localStorage', '$sessionStorage', 'API',  Programas]);
+            .service('Programas',  Programas);
 
+    Programas.$inject = ['$localStorage', '$sessionStorage', 'API'];
     function Programas ($localStorage, $sesionStorage, API) {
       var lProgramas = $localStorage.programs;
 

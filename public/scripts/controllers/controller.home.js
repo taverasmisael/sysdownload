@@ -1,9 +1,10 @@
 (function(){
     'use strict';
     angular.module('SysDownload')
-            .controller('HomeController' ,['$scope', 'Programas', 'Busqueda', HomeCtrl]);
+            .controller('HomeController' , HomeController);
 
-    function HomeCtrl ($scope, Programas, Busqueda) {
+    HomeController.$inject = ['$scope', 'Programas', 'Busqueda'];
+    function HomeController ($scope, Programas, Busqueda) {
       var vm = this;
       vm.filter = Busqueda.filter;
       vm.download = descargar;

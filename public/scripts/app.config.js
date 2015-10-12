@@ -1,9 +1,9 @@
 (function(){
     'use strict';
     angular.module('SysDownload')
-          .constant('TMPDIR', 'templates/')
-          .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 'TMPDIR', configFunction]);
+          .config(configFunction);
 
+    configFunction.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider', 'TMPDIR'];
     function configFunction ($stateProvider, $urlRouterProvider, $locationProvider, TMPDIR) {
       $locationProvider.html5Mode(true);
       $urlRouterProvider.otherwise('');

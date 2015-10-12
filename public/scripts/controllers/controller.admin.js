@@ -1,9 +1,10 @@
 (function(){
     'use strict';
     angular.module('SysDownload')
-                .controller('AdminController' ,['$scope', 'Programas', 'Upload', AdminCtrl]);
+                .controller('AdminController', AdminController);
 
-    function AdminCtrl ($scope, Programas, Upload) {
+    AdminController.$inject = ['$scope', 'Programas', 'Upload'];
+    function AdminController ($scope, Programas, Upload) {
       var vm = this;
       vm.crearPrograma = createProgram;
       // API.getCategories().$promise.then(function (cats) {

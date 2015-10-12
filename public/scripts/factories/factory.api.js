@@ -1,12 +1,12 @@
 (function(){
     'use strict';
     angular.module('SysDownload')
-            .constant('APIURI', '/api/programs/:programId')
             // Factoria para acceder a la API y regresar la lista de programas en la base de datos
-            .factory('API', ['$resource', 'APIURI', APIFactory])
+            .factory('API', APIFactory)
             // Factoria para compartir entre controladores, los terminos de busqueda de los programas
             .factory('Busqueda', BusquedaFactory);
 
+    APIFactory.$inject = ['$resource', 'APIURI'];
     function APIFactory ($resource, APIURI) {
       var ProgramasMethods = {
         getAll: {
