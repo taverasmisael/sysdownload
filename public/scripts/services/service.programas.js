@@ -1,12 +1,11 @@
 (function(){
     'use strict';
-    angular.module('sysDownload')
-            .service('Programas',  Programas);
+    angular.module('sysDownload').service('Programas',  Programas);
 
     Programas.$inject = ['$localStorage', '$sessionStorage', 'API'];
-    function Programas ($localStorage, $sesionStorage, API) {
-      var lProgramas = $localStorage.programs;
 
+    function Programas ($localStorage, $sesionStorage, API) {
+      var lProgramas = $localStorage.programs || _fillLocalPrograms();
       var ProgramasService = {
         // Getters
         all: lProgramas,
@@ -14,81 +13,54 @@
         getByCategory: getByCategory,
         // Setters
         create: add,
-        updateById: update,
-        deleteById: deleteById
+        update: update,
+        remove: remove
       };
-
-      // Private Object
-      var _local = {
-        Programs: _setLocalPrograms,
-        lastCategory: {
-          name: '',
-          elements: {}
-        },
-        _setLocalCategory: _setLocalCategory,
-        addNew: addNewLocal
-      };
-
 
       return ProgramasService;
 
 
-      // Private Methods
-      function _setLocalPrograms () {
-        console.log('getting Locals....');
-        if (!$localStorage.programs) {
-          API.getAll().$promise.then(function (programs) {
-            $localStorage.programs = programs;
-          }).catch(function (err) {
-            console.log(err);
-          });
-        }
-        lProgramas = $localStorage.programs;
-
-        return lProgramas;
-      }
-
-
-      function _setLocalCategory (catName) {
-        if (catName !== $localStorage.lastCategory.name) {
-          $localStorage.lastCategory.name = catName;
-          $localStorage.lastCategory.elements = lProgramas.reduce(function (programa) {
-            return programa.info.category === catName;
-          });
-        }
-        _local.lastCategory = $localStorage.lastCategory;
-        return _local.lastCategory;
-      }
-
-      function addNewLocal (newProgram) {
-        var nuevoPrograma = {programa: newProgram};
-        API.create(nuevoPrograma).$promise.then(function (programas) {
-          delete $localStorage.programs;
-          $localStorage.programs = programas;
-        });
-
-        return newProgram.name;
-      }
-
-      // Public Methdos
+      // Service Functionallity
       function getAll () {
-        return _local.Programs();
+        // body...
       }
 
-      function getByCategory (categoryName) {
-        return _local._setLocalCategory(categoryName);
+      function getByCategory (catName) {
+        // body...
       }
 
       function add (newProgram) {
-        return _local.addNew(newProgram);
+        // body...
       }
 
-      function update (id, newInfo) {
-        return _local.update(id, newInfo);
+      function update (programId, newData) {
+        // body...
       }
 
-      function deleteById (id) {
-        return _local.deleteById(id);
+      function remove (programId) {
+        // body...
+      }
+
+
+      // Internal Functions
+      function _fillLocalPrograms () {
+        API.getAll().$promise.then(function (programs) {
+          console.log('Calliing API...');
+          $localStorage.programs = programs;
+          console.log('27 programs: ', programs);
+          return programs;
+        }).catch(errHanddler);
+      }
+
+
+      // Really Private Functions
+      function errHanddler (err) {
+        var error = err || {
+          name: 'Unexpected Error. No name Provider',
+          type: undefined
+        };
+
+        console.log(error);
       }
     }
 })();
