@@ -11,6 +11,6 @@ block navbar
             a(href="#")
               span.material-icons.waves-effect.waves-light search
             .searcher
-              input(type="search" name="search" ng-model="NavbarCtrl.filter.searchFilter.info.name")#mainSearch
+              input(type="search" name="search" ng-model="NavbarCtrl.filter.searchFilter.info.name" ng-model-options="{ debounce: 1000 }")#mainSearch
               span.material-icons(ng-click="NavbarCtrl.clearSearch()") close
 
