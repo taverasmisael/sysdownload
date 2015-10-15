@@ -8,9 +8,6 @@
     function AdminController($scope, Programas) {
         var vm = this;
         vm.crearPrograma = createProgram;
-        // API.getCategories().$promise.then(function (cats) {
-        //   vm.categories = cats;
-        // });
 
         // Funcionalidades del Controlador
         function createProgram(file, program) {
@@ -27,6 +24,8 @@
 
         // Funciones internas del Controlador
         $scope.$on('$includeContentLoaded', function() {
+            vm.categories = Programas.categories;
+            console.log(vm.categories);
             /*jshint camelcase: false */
             $('select').material_select();
         });

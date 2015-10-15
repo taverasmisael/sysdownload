@@ -5,11 +5,14 @@
     Programas.$inject = ['$localStorage', '$sessionStorage', 'Upload', 'API'];
 
     function Programas($localStorage, $sesionStorage, Upload, API) {
-        var lProgramas = $localStorage.programs || _fillLocalPrograms();
+        var lProgramas = $localStorage.programs || _fillLocalPrograms(),
+            lCategories = $localStorage.categories || _fillLocalCategories();
         var ProgramasService = {
             // Getters
             all: lProgramas,
+            categories: lCategories,
             getAll: getAll,
+            getCategories: lCategories,
             getByCategory: getByCategory,
             // Setters
             create: add,
@@ -50,14 +53,19 @@
 
         // Internal Functions
         function _fillLocalPrograms() {
-            API.getAll().$promise.then(function(programs) {
-                console.log('Calliing API...');
+            API.getAll().$promise.then(function (programs) {
                 $localStorage.programs = programs;
-                console.log('27 programs: ', programs);
                 return programs;
             }).catch(errHanddler);
         }
 
+        function _fillLocalCategories () {
+            API.getCategories().$promise.then(function (categories) {
+                console.log('Calling Categories API....');
+                $localStorage.categories = categories[0];
+                return categories[0];
+            }).catch(errHanddler);
+        }
 
         // Really Private Functions
         function errHanddler(err) {

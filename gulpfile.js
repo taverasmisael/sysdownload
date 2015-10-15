@@ -110,8 +110,9 @@ gulp.task('watch', function() {
 gulp.task('develop', function() {
     $.livereload.listen();
     $.nodemon({
-        script: 'app.js',
+        debug: true,
         ext: 'js coffee jade',
+        script: 'app.js',
         stdout: false
     }).on('readable', function() {
         this.stdout.on('data', function(chunk) {
