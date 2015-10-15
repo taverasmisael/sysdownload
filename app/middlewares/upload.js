@@ -21,9 +21,9 @@ module.exports = function (req, res, next) {
         targetPath = path.resolve(config.uploadDir + '/' + date + '/' + programFile.name);
 
     req.body.programa = {};
-    req.body.programa.name = fields['program[name]'];
-    req.body.programa.category = fields['program[category]'] || 'Otros';
-    req.body.programa.resume = fields['program[resume]'];
+    req.body.programa.name = fields['programa[name]'] || programFile.name;
+    req.body.programa.category = fields['programa[category]'] || 'Otros';
+    req.body.programa.resume = fields['programa[resume]'];
 
     req.fileInfo = {
       mime: programFile.type,

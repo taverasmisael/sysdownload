@@ -3,14 +3,15 @@
     angular.module('sysDownload')
         .controller('AdminController', AdminController);
 
-    AdminController.$inject = ['$scope', 'Programas'];
+    AdminController.$inject = ['$scope', '$timeout', 'Programas'];
 
-    function AdminController($scope, Programas) {
+    function AdminController($scope, $timeout, Programas) {
         var vm = this;
         vm.crearPrograma = createProgram;
 
         // Funcionalidades del Controlador
         function createProgram(file, program) {
+            console.log(program);
             Programas.create(file, program)
                 .then(function(nuevoPrograma) {
                     Materialize.toast('Creado ' + nuevoPrograma.data, 3500);
@@ -26,8 +27,12 @@
         $scope.$on('$includeContentLoaded', function() {
             vm.categories = Programas.categories;
             console.log(vm.categories);
+            $timeout(createSelects, 1000);
+        });
+
+        function createSelects () {
             /*jshint camelcase: false */
             $('select').material_select();
-        });
+        }
     }
 })();

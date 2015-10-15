@@ -37,7 +37,7 @@
                 url: '/api/programs',
                 data: {
                     files: programFile,
-                    newProgram
+                    programa: newProgram
                 }
             });
         }

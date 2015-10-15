@@ -27,13 +27,12 @@
                       <label class="active" for="newProgramIResume">Breve Descripcion</label>
                     </div>
                     <div class="input-field col s6">
-                        <select>
+                        <select ng-model="AdminCtrl.newProgram.category">
                           <option value="" disabled selected>Categoria</option>
                           <option ng-repeat="cat in AdminCtrl.categories.availableCategories" selected="{{ ::AdminCtrl.categories.defaultCategory }}" value="{{ ::cat.name }}">{{::cat.name}}</option>
                         </select>
                         <label>Tipo de Programa</label>
                       </div>
-                </div>
               <button type="submit" class="waves-effect waves-light btn-flat btn-gigant col s4 offset-s8"><i class="material-icons">save</i> Guardar</button>
           </form>
         </div>
