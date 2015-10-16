@@ -1,8 +1,8 @@
-<!-- Modal Structure -->
-<div id="creationModal" class="modal modal-fixed-footer">
+<!-- Creation Modal Structure -->
+<div id="creationModal" class="modal">
     <div class="modal-content">
         <h4>Crear nuevo Programa</h4>
-        <a href="#" class="modal-close close waves-effect"><i class="material-icons small">close</i></a>
+        <a href="#" title="Aboratar Creacion/Edicion" class="modal-close close waves-effect"><i class="material-icons small">close</i></a>
         <div class="divider"></div>
         <div class="row">
             <form id="creationForm" enctype="multipart/form-data" class="col s12" ng-submit="AdminCtrl.crearPrograma(AdminCtrl.currentFile, AdminCtrl.newProgram)">
@@ -38,3 +38,4 @@
         </div>
     </div>
 </div>
+<!-- End Creation Modal -->

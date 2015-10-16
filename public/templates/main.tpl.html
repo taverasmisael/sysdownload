@@ -1,5 +1,5 @@
 <div class="row programs-container" ng-if="HomeCtrl.programas.length">
-  <div class="col s12 m6 l3 program" ng-repeat="program in HomeCtrl.programas | filter: HomeCtrl.filter.searchFilter:strict track by program._id ">
+  <div class="col s12 m6 l3 program" ng-repeat="program in HomeCtrl.programas | filter: HomeCtrl.filter.searchFilter track by program._id">
       <ul id="programsMenu{{program._id}}" class="auto-size dropdown-content white">
           <li><a href="#" class="grey-text text-darken-3"><i class="material-icons">mode_edit</i>Editar</a></li>
           <li><a href="#" class="grey-text text-darken-3"><i class="material-icons materialize-red-text text-lighten-1">delete</i>Eliminar</a></li>
@@ -25,18 +25,19 @@
       </div>
   </div>
 </div>
-<!--
-Usaremos esto mas adelante para filtrar las vistas y poner un estado vacio
-<div class="valign-wrapper" ng-if="!HomeCtrl.programas.length">
+<!-- Usaremos esto mas adelante para filtrar las vistas y poner un estado vacio -->
+<!-- <div class="valign-wrapper" ng-if="HomeCtrl.programas.length">
   <div class="valign">
     <h1 ng-if="HomeCtrl.filter.searchFilter">No hay nada que ver en <span ng-bind="HomeCtrl.filter.searchFilter"></span></h1>
     <h1 ng-if="!HomeCtrl.filter.searchFilter">No has agregado ningun programa :( <small>Agrega uno <a href="#">aqui</a></small> </h1>
   </div>
-</div
- -->
+</div -->
 <div class="fixed-action-btn">
   <a ng-click="HomeCtrl.openCreate()" class="btn-floating btn-large red darken-1 waves-effect waves-light">
     <i class="large material-icons">add</i>
   </a>
 </div>
-<div ng-include="'/templates/modals/modal.creation.html'" ng-controller="AdminController as AdminCtrl"></div>
+<div ng-controller="AdminController as AdminCtrl">
+  <div ng-include="'/templates/modals/modal.creation.html'" ></div>
+  <div ng-include="'/templates/modals/modal.server.html'" ></div>
+</div>
