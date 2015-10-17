@@ -10,7 +10,7 @@
         <div class="divider"></div>
         <ul>
           <li ng-repeat="disk in AdminCtrl.serverinfo.disk">
-            <strong>{{disk.drive}} </strong><span>Usados: {{disk.used}} de {{disk.total}} ({{disk.freePercentage}}% Libre)</span>
+            <strong>{{disk.drive}} </strong><span>Usados: {{disk.used | bytes}} de {{disk.total | bytes}} ({{disk.freePercentage}}% Libre)</span>
             <div class="progress">
               <div class="determinate" style="width: {{disk.usedPercentage}}%;"></div>
             </div>
