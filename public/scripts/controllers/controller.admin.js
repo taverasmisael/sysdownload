@@ -3,11 +3,12 @@
     angular.module('sysDownload')
         .controller('AdminController', AdminController);
 
-    AdminController.$inject = ['$scope', '$timeout', 'Programas'];
+    AdminController.$inject = ['$scope', '$timeout', 'Programas', 'Maintenance'];
 
-    function AdminController($scope, $timeout, Programas) {
+    function AdminController($scope, $timeout, Programas, Maintenance) {
         var vm = this;
         vm.crearPrograma = createProgram;
+        vm.reloadServerinfo = getServerInfo;
 
         // Funcionalidades del Controlador
         function createProgram(file, program) {
@@ -21,6 +22,13 @@
                     var percentage = parseInt(100.0 * event.loaded / event.total);
                     console.log('Progress: ' + percentage);
               });
+        }
+
+        function getServerInfo () {
+          Maintenance.serverInfo()
+                .then(function (res) { // res === response
+                  vm.serverinfo = res.data;
+                });
         }
 
         // Funciones internas del Controlador

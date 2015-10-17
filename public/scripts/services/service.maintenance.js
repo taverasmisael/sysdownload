@@ -11,10 +11,7 @@
       return MaintenanceService;
 
       function getServerInfo () {
-        $http.get('/api/mainenance/info')
-              .then(function (si) {
-                console.log(si);
-              });
+        return $http.get('/api/maintenance/info');
       }
 
       function addMasively () {
