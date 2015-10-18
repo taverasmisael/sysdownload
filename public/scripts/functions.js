@@ -4,8 +4,7 @@
 
     function loadFunction () {
       var searchBox = $('.search-box'),
-          searchTrigger = $('.search-box a'),
-          modalsTriggers = $('.modal-trigger');
+          searchTrigger = $('.search-box a');
 
       searchTrigger.on('click', function (event) {
         event.preventDefault();
@@ -15,11 +14,8 @@
         if ($('.card.program').length) {
           clearInterval(cardsInterval);
           $('.dropdown-button').dropdown();
+          $('.modal-trigger').leanModal();
         }
       }, 1000);
-      $('#infoServer').click(function (e) {
-        e.preventDefault();
-        $('#infoModal').openModal();
-      })
     }
 })();
