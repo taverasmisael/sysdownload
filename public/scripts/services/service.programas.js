@@ -12,6 +12,7 @@
             all: lProgramas,
             categories: lCategories,
             getAll: getAll,
+            getById: getById,
             getCategories: lCategories,
             getByCategory: getByCategory,
             // Setters
@@ -26,6 +27,10 @@
         // Service Functionallity
         function getAll() {
             // body...
+        }
+
+        function getById (programId) {
+         return API.getById({programId: programId}).$promise;
         }
 
         function getByCategory(catName) {

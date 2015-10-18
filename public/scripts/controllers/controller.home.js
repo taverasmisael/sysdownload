@@ -9,6 +9,7 @@
       vm.filter = Busqueda.filter;
       vm.download = descargar;
       vm.openCreate = openCreationModal;
+      vm.setCurrentProgram = setCurrentProgram;
 
       vm.programas = Programas.all;
 
@@ -17,6 +18,11 @@
         Materialize.toast('Descargando ' + programaNombre, 3500);
       }
 
+      function setCurrentProgram (programId) {
+          Programas.getById(programId).then(function (programa) {
+              Busqueda.selectedProgram.current = programa.info;
+          });
+      }
       function openCreationModal () {
         $('#creationModal').openModal();
       }
