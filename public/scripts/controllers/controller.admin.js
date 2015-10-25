@@ -9,9 +9,6 @@
         var vm = this;
         vm.crearPrograma = createProgram;
         vm.reloadServerinfo = getServerInfo;
-        var programaSeleccionado = Busqueda.selectedProgram;
-        console.log(programaSeleccionado);
-        vm.currentSelected = programaSeleccionado.current.info;
         vm.editProgram = editProgram;
 
         // Funcionalidades del Controlador
@@ -45,6 +42,13 @@
         $scope.$on('$includeContentLoaded', function() {
             vm.categories = vm.categories || Programas.categories;
             $timeout(createSelects, 1000);
+        });
+
+        $scope.$watch(function () { return Busqueda.selectedProgram.current; }, function (newVal) {
+            console.log(Busqueda.selectedProgram.current);
+            if (typeof newVal !== 'undefined') {
+                vm.currentSelected = Busqueda.selectedProgram.current.info;
+            }
         });
 
         function createSelects () {

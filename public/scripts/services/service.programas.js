@@ -50,7 +50,7 @@
         function update(programId, newData) {
            return API.update({programId: programId, update: newData}).$promise
                   .then(function () {
-                    _fillLocalPrograms();
+                   lProgramas = _fillLocalPrograms();
                   });
         }
 
@@ -61,6 +61,7 @@
 
         // Internal Functions
         function _fillLocalPrograms() {
+            console.log('Filling Local Programs :3');
             API.getAll().$promise.then(function (programs) {
                 $localStorage.programs = programs;
                 return programs;
