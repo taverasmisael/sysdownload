@@ -48,7 +48,10 @@
         }
 
         function update(programId, newData) {
-            // body...
+           return API.update({programId: programId, update: newData}).$promise
+                  .then(function () {
+                    _fillLocalPrograms();
+                  });
         }
 
         function remove(programId) {

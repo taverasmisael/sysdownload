@@ -112,7 +112,7 @@ router.put('/api/programs/:programId', function(req, res) {
     var id = req.params.programId,
         update = req.body.update;
     console.log('HOLIS', id, update);
-    Program.findByIdAndUpdate(id, update, function(err, programa) {
+    Program.findByIdAndUpdate(id, {info: update}, function(err, programa) {
         if (err) {
             console.log('Ocurrio un error actualizando el programa: "', id, '"\n', err);
             res.send(err);

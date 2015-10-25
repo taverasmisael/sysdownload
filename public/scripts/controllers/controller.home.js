@@ -20,7 +20,8 @@
 
       function setCurrentProgram (programId) {
           Programas.getById(programId).then(function (programa) {
-              Busqueda.selectedProgram.current = programa.info;
+              console.log(programa);
+              Busqueda.selectedProgram.current = programa;
           });
       }
       function openCreationModal () {

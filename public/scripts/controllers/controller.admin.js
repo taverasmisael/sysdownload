@@ -9,7 +9,10 @@
         var vm = this;
         vm.crearPrograma = createProgram;
         vm.reloadServerinfo = getServerInfo;
-        vm.currentProgram = Busqueda.selectedProgram;
+        var programaSeleccionado = Busqueda.selectedProgram;
+        console.log(programaSeleccionado);
+        vm.currentSelected = programaSeleccionado.current.info;
+        vm.editProgram = editProgram;
 
         // Funcionalidades del Controlador
         function createProgram(file, program) {
@@ -22,6 +25,13 @@
                     var percentage = parseInt(100.0 * event.loaded / event.total);
                     console.log('Progress: ' + percentage);
               });
+        }
+        function editProgram (newData) {
+            console.log('Controller Data: ', newData);
+            Programas.update(Busqueda.selectedProgram   .current._id, newData)
+            .then(function () {
+                Materialize.toast('Actualizado ' + newData.name, 3500);
+            });
         }
 
         function getServerInfo () {
