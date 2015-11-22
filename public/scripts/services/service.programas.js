@@ -34,7 +34,11 @@
         }
 
         function getByCategory(catName) {
-            // body...
+            // This functionality for now
+            // isn't used but just in case
+            // This avoid JSHINT falsePositive
+            // errors
+            console.log(catName, ': This functionality isn\'t implemented yet! :c');
         }
 
         function add(programFile, newProgram) {
@@ -55,7 +59,11 @@
         }
 
         function remove(programId) {
-            // body...
+            // This functionality for now
+            // isn't used but just in case
+            // This avoid JSHINT falsePositive
+            // errors
+            console.log(programId, ': This functionality isn\'t implemented yet! :c');
         }
 
 
