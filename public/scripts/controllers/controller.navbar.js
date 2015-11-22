@@ -1,8 +1,9 @@
 (function(){
     'use strict';
-    angular.module('SysDownload')
-          .controller('NavbarController', ['$scope', 'Busqueda', NavbarController]);
+    angular.module('sysDownload')
+          .controller('NavbarController',  NavbarController);
 
+    NavbarController.$inject = ['$scope', 'Busqueda'];
     function NavbarController ($scope, Busqueda) {
       var vm = this;
       vm.filter = Busqueda.filter;

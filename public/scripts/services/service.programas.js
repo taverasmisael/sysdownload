@@ -1,93 +1,97 @@
-(function(){
+(function() {
     'use strict';
-    angular.module('SysDownload')
-            .service('Programas', ['$localStorage', '$sessionStorage', 'API',  Programas]);
+    angular.module('sysDownload').service('Programas', Programas);
 
-    function Programas ($localStorage, $sesionStorage, API) {
-      var lProgramas = $localStorage.programs;
+    Programas.$inject = ['$localStorage', '$sessionStorage', 'Upload', 'API'];
 
-      var ProgramasService = {
-        // Getters
-        all: lProgramas,
-        getAll: getAll,
-        getByCategory: getByCategory,
-        // Setters
-        create: add,
-        updateById: update,
-        deleteById: deleteById
-      };
+    function Programas($localStorage, $sesionStorage, Upload, API) {
+        var lProgramas = $localStorage.programs || _fillLocalPrograms(),
+            lCategories = $localStorage.categories || _fillLocalCategories();
+        var ProgramasService = {
+            // Getters
+            all: lProgramas,
+            categories: lCategories,
+            getAll: getAll,
+            getById: getById,
+            getCategories: lCategories,
+            getByCategory: getByCategory,
+            // Setters
+            create: add,
+            update: update,
+            remove: remove
+        };
 
-      // Private Object
-      var _local = {
-        Programs: _setLocalPrograms,
-        lastCategory: {
-          name: '',
-          elements: {}
-        },
-        _setLocalCategory: _setLocalCategory,
-        addNew: addNewLocal
-      };
+        return ProgramasService;
 
 
-      return ProgramasService;
-
-
-      // Private Methods
-      function _setLocalPrograms () {
-        console.log('getting Locals....');
-        if (!$localStorage.programs) {
-          API.getAll().$promise.then(function (programs) {
-            $localStorage.programs = programs;
-          }).catch(function (err) {
-            console.log(err);
-          });
+        // Service Functionallity
+        function getAll() {
+            // body...
         }
-        lProgramas = $localStorage.programs;
 
-        return lProgramas;
-      }
-
-
-      function _setLocalCategory (catName) {
-        if (catName !== $localStorage.lastCategory.name) {
-          $localStorage.lastCategory.name = catName;
-          $localStorage.lastCategory.elements = lProgramas.reduce(function (programa) {
-            return programa.info.category === catName;
-          });
+        function getById (programId) {
+         return API.getById({programId: programId}).$promise;
         }
-        _local.lastCategory = $localStorage.lastCategory;
-        return _local.lastCategory;
-      }
 
-      function addNewLocal (newProgram) {
-        var nuevoPrograma = {programa: newProgram};
-        API.create(nuevoPrograma).$promise.then(function (programas) {
-          delete $localStorage.programs;
-          $localStorage.programs = programas;
-        });
+        function getByCategory(catName) {
+            // This functionality for now
+            // isn't used but just in case
+            // This avoid JSHINT falsePositive
+            // errors
+            console.log(catName, ': This functionality isn\'t implemented yet! :c');
+        }
 
-        return newProgram.name;
-      }
+        function add(programFile, newProgram) {
+            return Upload.upload({
+                url: '/api/programs',
+                data: {
+                    files: programFile,
+                    programa: newProgram
+                }
+            });
+        }
 
-      // Public Methdos
-      function getAll () {
-        return _local.Programs();
-      }
+        function update(programId, newData) {
+           return API.update({programId: programId, update: newData}).$promise
+                  .then(function () {
+                   lProgramas = _fillLocalPrograms();
+                  });
+        }
 
-      function getByCategory (categoryName) {
-        return _local._setLocalCategory(categoryName);
-      }
+        function remove(programId) {
+            // This functionality for now
+            // isn't used but just in case
+            // This avoid JSHINT falsePositive
+            // errors
+            console.log(programId, ': This functionality isn\'t implemented yet! :c');
+        }
 
-      function add (newProgram) {
-        return _local.addNew(newProgram);
-      }
 
-      function update (id, newInfo) {
-        return _local.update(id, newInfo);
-      }
+        // Internal Functions
+        function _fillLocalPrograms() {
+            console.log('Filling Local Programs :3');
+            API.getAll().$promise.then(function (programs) {
+                $localStorage.programs = programs;
+                return programs;
+            }).catch(errHanddler);
+        }
 
-      function deleteById (id) {
-        return _local.deleteById(id);
-      }
+        function _fillLocalCategories () {
+            API.getCategories().$promise.then(function (categories) {
+                console.log('Calling Categories API....');
+                $localStorage.categories = categories[0];
+                return categories[0];
+            }).catch(errHanddler);
+        }
+
+        // Really Private Functions
+        function errHanddler(err) {
+            var error = err || {
+                name: 'Unexpected Error. No name Provider',
+                type: undefined
+            };
+
+            console.log(error);
+        }
     }
 })();

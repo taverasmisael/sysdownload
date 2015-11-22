@@ -1,13 +1,15 @@
 (function(){
     'use strict';
-    angular.module('SysDownload')
-            .controller('HomeController' ,['$scope', 'Programas', 'Busqueda', HomeCtrl]);
+    angular.module('sysDownload')
+            .controller('HomeController' , HomeController);
 
-    function HomeCtrl ($scope, Programas, Busqueda) {
+    HomeController.$inject = ['$scope', 'Programas', 'Busqueda'];
+    function HomeController ($scope, Programas, Busqueda) {
       var vm = this;
       vm.filter = Busqueda.filter;
       vm.download = descargar;
       vm.openCreate = openCreationModal;
+      vm.setCurrentProgram = setCurrentProgram;
 
       vm.programas = Programas.all;
 
@@ -16,6 +18,12 @@
         Materialize.toast('Descargando ' + programaNombre, 3500);
       }
 
+      function setCurrentProgram (programId) {
+          Programas.getById(programId).then(function (programa) {
+              console.log(programa);
+              Busqueda.selectedProgram.current = programa;
+          });
+      }
       function openCreationModal () {
         $('#creationModal').openModal();
       }

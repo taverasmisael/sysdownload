@@ -1,12 +1,12 @@
 (function(){
     'use strict';
-    angular.module('SysDownload')
-            .constant('APIURI', '/api/programs/:programId')
+    angular.module('sysDownload')
             // Factoria para acceder a la API y regresar la lista de programas en la base de datos
-            .factory('API', ['$resource', 'APIURI', APIFactory])
+            .factory('API', APIFactory)
             // Factoria para compartir entre controladores, los terminos de busqueda de los programas
             .factory('Busqueda', BusquedaFactory);
 
+    APIFactory.$inject = ['$resource', 'APIURI'];
     function APIFactory ($resource, APIURI) {
       var ProgramasMethods = {
         getAll: {
@@ -17,7 +17,7 @@
         getById: {
           method: 'GET',
           params: {programId: '@programId'},
-          isArray: true
+          isArray: false
         },
         getByCategory: {
           url: 'api/category/:categoryName',
@@ -29,7 +29,7 @@
           url: 'api/category/:categoryName',
           method: 'GET',
           params: {categoryName: '@categoryName'},
-          isArray: false
+          isArray: true
         },
         create: {
           method: 'POST',
@@ -50,6 +50,9 @@
       return {
         filter: {
           searchFilter: ''
+        },
+        selectedProgram: {
+          current: '',
         }
       };
     }

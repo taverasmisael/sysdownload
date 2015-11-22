@@ -7,10 +7,13 @@ block navbar
           a.button-collapse(href='#', data-activates='nav-mobile')
             i.zmdi.zmdi-menu
           a(href="/").brand-logo Sysdownload
+          .info-box.right
+            a#infoServer(href="#infoModal" title="Informacion del servidor" data-target="#infoModal").modal-trigger
+              span.material-icons info_outline
           .search-box.right
-            a(href="#")
+            a(href="#" title="Buscar")
               span.material-icons.waves-effect.waves-light search
             .searcher
-              input(type="search" name="search" ng-model="NavbarCtrl.filter.searchFilter.info.name")#mainSearch
+              input(type="search" name="search" ng-model="NavbarCtrl.filter.searchFilter.info.name" ng-model-options="{ debounce: 500 }")#mainSearch
               span.material-icons(ng-click="NavbarCtrl.clearSearch()") close
 

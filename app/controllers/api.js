@@ -79,11 +79,9 @@ router.get('/api/category/:categoryName', function(req, res) {
 // Create a new Program
 router.post('/api/programs/', uploadFile, function(req, res) {
   var newProgram = req.body.programa;
-  //var Programa = new Program();
+  var Programa = new Program();
   console.log('FI', req.fileInfo);
   console.log('Pro', newProgram);
-  res.json(true);
-/*
     Programa.info = newProgram;
     // This `Programa.file will be provider by a promise function
     // that upload the file and returns his file info.
@@ -94,6 +92,7 @@ router.post('/api/programs/', uploadFile, function(req, res) {
             console.log('Ocurrio un error salvando el programa (ya esta en el sistema de archivos) \n', err);
             res.send(err);
         }
+        console.log('Programa Creado');
 
         Program.findById(newP.id, function(err, nuevoPrograma) {
             if (err) {
@@ -104,7 +103,7 @@ router.post('/api/programs/', uploadFile, function(req, res) {
             res.json(nuevoPrograma);
         });
     });
-*/
+
 });
 
 // Update an specific program byID
@@ -112,7 +111,7 @@ router.put('/api/programs/:programId', function(req, res) {
     var id = req.params.programId,
         update = req.body.update;
     console.log('HOLIS', id, update);
-    Program.findByIdAndUpdate(id, update, function(err, programa) {
+    Program.findByIdAndUpdate(id, {info: update}, function(err, programa) {
         if (err) {
             console.log('Ocurrio un error actualizando el programa: "', id, '"\n', err);
             res.send(err);
