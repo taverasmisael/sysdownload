@@ -17,7 +17,7 @@
         getById: {
           method: 'GET',
           params: {programId: '@programId'},
-          isArray: true
+          isArray: false
         },
         getByCategory: {
           url: 'api/category/:categoryName',
@@ -50,6 +50,9 @@
       return {
         filter: {
           searchFilter: ''
+        },
+        selectedProgram: {
+          current: '',
         }
       };
     }

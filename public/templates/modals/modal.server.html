@@ -1,7 +1,7 @@
 <!-- Modal Info Structure -->
 <div id="infoModal" class="modal modal-fixed-footer">
   <div class="modal-content">
-    <h4>Información de Servidores <i class="material-icons tiny" title="Actualizar Informacion" ng-click="AdminCtrl.retriveServerinfo()">replay</i></h4>
+    <h4>Información de Servidores <a href="#" ng-click="AdminCtrl.reloadServerinfo()"><span class="material-icons tiny" title="Actualizar Informacion" ng-click="AdminCtrl.retriveServerinfo()">replay</span></a></h4>
     <a href="#" title="Cerrar Informacion del Servidor" class="modal-close close waves-effect"><i class="material-icons small">close</i></a>
     <div class="divider"></div>
     <div class="row">
@@ -10,9 +10,9 @@
         <div class="divider"></div>
         <ul>
           <li ng-repeat="disk in AdminCtrl.serverinfo.disk">
-            <strong>{{::disk.drive}} :</strong><span>{{::disk.free}} of {{::disk.total}}</span>
+            <strong>{{disk.drive}} </strong><span>Usados: {{disk.used | bytes}} de {{disk.total | bytes}} ({{disk.freePercentage}}% Libre)</span>
             <div class="progress">
-              <div class="determinate" style="width: {{::usedPercetage}}}%"></div>
+              <div class="determinate" style="width: {{disk.usedPercentage}}%;"></div>
             </div>
           </li>
         </ul>
@@ -22,7 +22,7 @@
       <div class="col s10 offset-s1">
         <h5>Base de Datos</h5>
         <div class="divider"></div>
-        <p ng-if="AdminCtrl.serverinfo.db"><strong>{{::AdminCtrl.serverinfo.db}}</strong> Entradas en la base de datos.</p>
+        <p ng-if="AdminCtrl.serverinfo.db"><strong>{{AdminCtrl.serverinfo.db}}</strong> Entradas en la base de datos.</p>
         <p>Si crees que deberían haber más <a href="#">usa esta herramienta</a>.</p>
       </div>
     </div>

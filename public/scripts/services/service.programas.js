@@ -12,6 +12,7 @@
             all: lProgramas,
             categories: lCategories,
             getAll: getAll,
+            getById: getById,
             getCategories: lCategories,
             getByCategory: getByCategory,
             // Setters
@@ -26,6 +27,10 @@
         // Service Functionallity
         function getAll() {
             // body...
+        }
+
+        function getById (programId) {
+         return API.getById({programId: programId}).$promise;
         }
 
         function getByCategory(catName) {
@@ -43,7 +48,10 @@
         }
 
         function update(programId, newData) {
-            // body...
+           return API.update({programId: programId, update: newData}).$promise
+                  .then(function () {
+                   lProgramas = _fillLocalPrograms();
+                  });
         }
 
         function remove(programId) {
@@ -53,6 +61,7 @@
 
         // Internal Functions
         function _fillLocalPrograms() {
+            console.log('Filling Local Programs :3');
             API.getAll().$promise.then(function (programs) {
                 $localStorage.programs = programs;
                 return programs;

@@ -3,18 +3,19 @@
     angular.module('sysDownload')
         .controller('AdminController', AdminController);
 
-    AdminController.$inject = ['$scope', '$timeout', 'Programas'];
+    AdminController.$inject = ['$scope', '$timeout', 'Busqueda', 'Programas', 'Maintenance'];
 
-    function AdminController($scope, $timeout, Programas) {
+    function AdminController($scope, $timeout, Busqueda, Programas, Maintenance) {
         var vm = this;
         vm.crearPrograma = createProgram;
+        vm.reloadServerinfo = getServerInfo;
+        vm.editProgram = editProgram;
 
         // Funcionalidades del Controlador
         function createProgram(file, program) {
-            console.log(program);
             Programas.create(file, program)
                 .then(function(nuevoPrograma) {
-                    Materialize.toast('Creado ' + nuevoPrograma.data, 3500);
+                    Materialize.toast('Creado ' + nuevoPrograma.data.info.name, 3500);
                 },function(err) {
                     console.log(err);
                 } ,function(event) {
@@ -22,12 +23,31 @@
                     console.log('Progress: ' + percentage);
               });
         }
+        function editProgram (newData) {
+            console.log('Controller Data: ', newData);
+            Programas.update(Busqueda.selectedProgram   .current._id, newData)
+            .then(function () {
+                Materialize.toast('Actualizado ' + newData.name, 3500);
+            });
+        }
+
+        function getServerInfo () {
+          Maintenance.serverInfo()
+                .then(function (res) { // res === response
+                  vm.serverinfo = res.data;
+                });
+        }
 
         // Funciones internas del Controlador
         $scope.$on('$includeContentLoaded', function() {
-            vm.categories = Programas.categories;
-            console.log(vm.categories);
+            vm.categories = vm.categories || Programas.categories;
             $timeout(createSelects, 1000);
+        });
+
+        $scope.$watch(function () { return Busqueda.selectedProgram.current; }, function (newVal) {
+            if (typeof newVal !== 'undefined') {
+                vm.currentSelected = Busqueda.selectedProgram.current.info;
+            }
         });
 
         function createSelects () {
