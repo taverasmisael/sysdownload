@@ -15,10 +15,13 @@ module.exports = function (req, res, next) {
 
     console.log(files);
 
-    var date = new Date().toJSON().split('T')[0];
+    var date = new Date().toJSON().split('T')[0],
+        serverTIMESTAMP = new Date();
+
+    serverTIMESTAMP = serverTIMESTAMP.valueOf();
     var programFile = files.files,
         tempPath = programFile.path,
-        targetPath = path.resolve(config.uploadDir + '/' + date + '/' + programFile.name);
+        targetPath = path.resolve(config.uploadDir + '/' + date + '/' + serverTIMESTAMP + '-' + programFile.name );
 
     req.body.programa = {};
     req.body.programa.name = fields['programa[name]'] || programFile.name;

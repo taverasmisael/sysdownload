@@ -15,7 +15,7 @@
         function createProgram(file, program) {
             Programas.create(file, program)
                 .then(function(nuevoPrograma) {
-                    Materialize.toast('Creado ' + nuevoPrograma.data, 3500);
+                    Materialize.toast('Creado ' + nuevoPrograma.data.info.name, 3500);
                 },function(err) {
                     console.log(err);
                 } ,function(event) {
@@ -45,7 +45,6 @@
         });
 
         $scope.$watch(function () { return Busqueda.selectedProgram.current; }, function (newVal) {
-            console.log(Busqueda.selectedProgram.current);
             if (typeof newVal !== 'undefined') {
                 vm.currentSelected = Busqueda.selectedProgram.current.info;
             }
