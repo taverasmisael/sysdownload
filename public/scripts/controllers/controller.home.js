@@ -20,7 +20,6 @@
 
       function setCurrentProgram (programId) {
           Programas.getById(programId).then(function (programa) {
-              console.log(programa);
               Busqueda.selectedProgram.current = programa;
           });
       }
