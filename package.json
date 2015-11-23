@@ -18,7 +18,8 @@
     "mongoose": "^4.1.2",
     "mongoose-timestamp": "^0.4.0",
     "morgan": "^1.6.1",
-    "serve-favicon": "^2.3.0"
+    "serve-favicon": "^2.3.0",
+    "yargs": "^3.30.0"
   },
   "devDependencies": {
     "gulp": "^3.9.0",

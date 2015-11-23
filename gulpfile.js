@@ -21,9 +21,13 @@
 
 // Include Gulp & tools we'll use
 var gulp = require('gulp');
+
 var $ = require('gulp-load-plugins')();
 var runSequence = require('run-sequence');
 var wiredep = require('wiredep').stream;
+var args = require('yargs').argv;
+
+process.env.NODE_ENV = args.env || 'development';
 
 var AUTOPREFIXER_BROWSERS = [
     'ie >= 10',
@@ -128,5 +132,5 @@ gulp.task('develop', function() {
 
 
 gulp.task('default', function(cb) {
-    runSequence('styles', ['wiredep', 'jshint', 'watch', 'develop'], cb)
+    runSequence('styles', ['wiredep', 'jshint', 'watch', 'develop'], cb);
 });
