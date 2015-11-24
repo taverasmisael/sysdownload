@@ -9,9 +9,9 @@ link(rel="shortcut icon" href="favicon.ico" type="image/x-icon" )
 
 //- Author Information
 meta(name="author" content="Misael Taveras")
-meta(name="publisher" content="https://github.com/Macro-T")
-meta(name="copyright" content="https://github.com/Macro-T")
-meta(name="host" content="https://github.com/Macro-T")
+meta(name="publisher" content="https://github.com/taversamisael")
+meta(name="copyright" content="https://github.com/taversamisael")
+meta(name="host" content="https://github.com/taversamisael")
 
 //- Support For Android HomeScreen
 meta(name="mobile-web-app-capable" content="yes")
@@ -28,9 +28,13 @@ link(rel="apple-touch-icon" href="images/touch/apple-touch-icon.png")
 meta(name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png")
 meta(name="msapplication-TileColor" content="#03345D")
 
-//- Components Styles
-link(rel="stylesheet", href="components/Materialize/dist/css/materialize.css")
+//  Components Styles
 link(rel="stylesheet", href="https://fonts.googleapis.com/icon?family=Material+Icons")
+// build:css styles/vendor.min.css
+link(rel="stylesheet", href="components/Materialize/dist/css/materialize.css")
+// endbuild
 
+// build:css styles/style.min.css
 //- Personal Styles
 link(rel="stylesheet", href="styles/style.css")
+// endbuild

@@ -43,7 +43,6 @@ router.get('/api/programs/', function (req, res) {
 // Call an specific program byID. Returns one program
 router.get('/api/programs/:programId', function (req, res) {
     var id = req.params.programId;
-    console.log('Especific Program: ', id);
     Program.findById(id, function(err, programa) {
         if (err) {
             console.log('Ocurrio un error encontrando el programa: "', id, '"\n ', err);
@@ -62,7 +61,7 @@ router.get('/api/category', function(req, res) {
 // Call an specific Category
 router.get('/api/category/:categoryName', function(req, res) {
     var catName = req.params.categoryName;
-    console.log(catName);
+
     Program.find({
       'info.category': catName
     }, function(err, programas) {
@@ -70,7 +69,6 @@ router.get('/api/category/:categoryName', function(req, res) {
             console.log('Ocurrio un error al acceder a la categoria: "', catName, '"\n', err);
             res.send(err);
         }
-
         res.json(programas);
     });
 });
@@ -80,11 +78,7 @@ router.get('/api/category/:categoryName', function(req, res) {
 router.post('/api/programs/', uploadFile, function(req, res) {
   var newProgram = req.body.programa;
   var Programa = new Program();
-  console.log('FI', req.fileInfo);
-  console.log('Pro', newProgram);
     Programa.info = newProgram;
-    // This `Programa.file will be provider by a promise function
-    // that upload the file and returns his file info.
     Programa.file = req.fileInfo;
 
     Programa.save(function(err, newP) {
@@ -110,7 +104,6 @@ router.post('/api/programs/', uploadFile, function(req, res) {
 router.put('/api/programs/:programId', function(req, res) {
     var id = req.params.programId,
         update = req.body.update;
-    console.log('HOLIS', id, update);
     Program.findByIdAndUpdate(id, {info: update}, function(err, programa) {
         if (err) {
             console.log('Ocurrio un error actualizando el programa: "', id, '"\n', err);

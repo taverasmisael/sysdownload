@@ -6,14 +6,12 @@ var formidable = require('formidable'),
 
 module.exports = function (req, res, next) {
   var form = new formidable.IncomingForm();
-  console.log('Hola Middleware');
 
   form.uploadDir = path.normalize(config.uploadDir);
   form.keepExtensions = true;
   form.parse(req, function (err, fields, files) {
     if (err) {throw err;}
 
-    console.log(files);
 
     var date = new Date().toJSON().split('T')[0],
         serverTIMESTAMP = new Date();

@@ -16,7 +16,6 @@
         if (vm.filter.searchFilter) {
           vm.filter.searchFilter = '';
         } else {
-          console.log('Ocultate');
           $('.search-box').removeClass('expanded');
         }
       }
