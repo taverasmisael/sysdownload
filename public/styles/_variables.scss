@@ -1,0 +1,62 @@
+/*** Global ***/
+// Media Query Ranges
+$small-screen-up: 601px !default;
+$medium-screen-up: 993px !default;
+$large-screen-up: 1201px !default;
+$small-screen: 600px !default;
+$medium-screen: 992px !default;
+$large-screen: 1200px !default;
+
+$medium-and-up: "only screen and (min-width : #{$small-screen-up})" !default;
+$large-and-up: "only screen and (min-width : #{$medium-screen-up})" !default;
+$small-and-down: "only screen and (max-width : #{$small-screen})" !default;
+$medium-and-down: "only screen and (max-width : #{$medium-screen})" !default;
+$medium-only: "only screen and (min-width : #{$small-screen-up}) and (max-width : #{$medium-screen})" !default;
+
+//Card Colors
+$card-colors: (
+  14: #e51c23,
+  10: #D32F2F,
+  1: #c2185b,
+  11: #6a1b9a,
+  2: #512da8,
+  15: #283593,
+  3: #1E88E5,
+  12: #0288d1,
+  4: #0097a7,
+  13: #00bfa5,
+  5: #43A047,
+  16: #33691e,
+  17: #cddc39,
+  6: #f9a825,
+  18: #ffa000,
+  7: #f57c00,
+  19: #e64a19,
+  8: #4e342e,
+  9: #37474f,
+);
+/*
+Definicion de Colores por nombre
+$card-colors: (
+  1: "pink darken-2",
+  2: "deep-purple darken-2",
+  3: "blue darken-1",
+  4: "cyan darken-2",
+  5: "green darken-1",
+  6: "yellow darken-3",
+  7: "orange darken-2",
+  8: "brown darken-3",
+  9: "blue-grey darken-3",
+  10: "red darken-2",
+  11: "purple darken-3",
+  12: "light-blue darken-2",
+  13: "teal acent-4",
+  14: "materialize-red",
+  15: "indigo darken-3",
+  16: "light-green darken-4",
+  17: "lime",
+  18: "amber darken-2",
+  19: "deep-orange darken-2",
+);
+
+*/

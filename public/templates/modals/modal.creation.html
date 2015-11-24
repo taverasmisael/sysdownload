@@ -1,0 +1,41 @@
+<!-- Creation Modal Structure -->
+<div id="creationModal" class="modal">
+    <div class="modal-content">
+        <h4>Crear nuevo Programa</h4>
+        <a href="#" title="Aboratar Creacion/Edicion" class="modal-close close waves-effect"><i class="material-icons small">close</i></a>
+        <div class="divider"></div>
+        <div class="row">
+            <form id="creationForm" enctype="multipart/form-data" class="col s12" ng-submit="AdminCtrl.crearPrograma(AdminCtrl.currentFile, AdminCtrl.newProgram)">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input maxlength="30" type="text" id="newProgramIName" class="validate" placeholder="Nombre del Programa" ng-model="AdminCtrl.newProgram.name" required>
+                        <label class="active" for="newProgramIName">Nombre</label>
+                    </div>
+                    <div class="file-field input-field col s6">
+                        <div class="btn red lighten-1">
+                            <span>File</span>
+                            <input type="file" ngf-select ngf-max-size="2gb" ng-model="AdminCtrl.currentFile" required>
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input type="text" class="file-path validate" placeholder="Selecciona un archivo" disabled required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                      <input maxlength="75" type="text" id="newProgramIResume" class="validate" placeholder="Resumen del Programa" ng-model="AdminCtrl.newProgram.resume">
+                      <label class="active" for="newProgramIResume">Breve Descripcion</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <select ng-model="AdminCtrl.newProgram.category">
+                          <option value="" disabled selected>Categoria</option>
+                          <option ng-repeat="cat in AdminCtrl.categories.availableCategories" selected="{{ ::AdminCtrl.categories.defaultCategory }}" value="{{ ::cat.name }}">{{::cat.name}}</option>
+                        </select>
+                        <label>Tipo de Programa</label>
+                      </div>
+              <button type="submit" class="waves-effect waves-light btn-flat btn-gigant col s4 offset-s8"><i class="material-icons">save</i> Guardar</button>
+          </form>
+        </div>
+    </div>
+</div>
+<!-- End Creation Modal -->

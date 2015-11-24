@@ -1,9 +1,18 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
+@charset "UTF-8";
 
-a {
-  color: #00B7FF;
-  text-decoration: none;
-}
+/*!
+Sysdownload StyleSheet - http://github.com/taverasmisael/Sysdownload
+Licensed under the Apache License 2.0 - http://opensource.org/licenses/Apache
+
+Copyright (c) 2015 Misael Taveras
+*/
+
+// Vendors
+@import "color";
+
+// My Own Modules
+@import "variables";
+@import "fixes";
+@import "modules/navbar";
+@import "modules/cards";
+@import "modules/animation";

@@ -1,6 +1,16 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-  a(href="http://github.com/taverasmisael/sysdownload", target="_blank") Encuentra este proyecyo en github
+  include ./partials/navbar.jade
+  block navbar
+  main.container(ui-view)
+    .valign-wrapper
+      .valign
+        .preloader-wrapper.big.active
+          .spinner-layer.spinner-blue
+            .circle-clipper.left
+              .circle
+            .gap-patch
+              .circle
+            .circle-clipper.right
+              .circle

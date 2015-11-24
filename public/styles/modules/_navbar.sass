@@ -1,0 +1,27 @@
+.search-box, .info-box
+  overflow: hidden
+  width: 30px
+  transition: width 350ms cubic-bezier(0.4, 0, 1, 1)
+  margin: 0 0.7rem
+  a
+    display: inline-block
+    span
+      border-radius: 50%
+      line-height: 30px
+      width: 30px
+      height: 30px
+      padding-left: 3px
+      &:hover
+        background: rgba(255,255,255,0.2)
+  .searcher
+    display: inline-block
+    position: relative
+    .material-icons
+      position: absolute
+      top: 1.5rem
+      right: 0
+      font-size: 1em
+      cursor: pointer
+  &.expanded
+    width: 190px
+    transition: width 450ms cubic-bezier(0.4, 0, 1, 1)

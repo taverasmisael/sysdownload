@@ -1,19 +1,10 @@
 'use strict';
-var express = require('express'),
-  router = express.Router(),
-  mongoose = require('mongoose'),
-  Article = mongoose.model('Article');
-
+//var config = require('../../config/config.js');
 module.exports = function (app) {
-  app.use('/', router);
-};
-
-router.get('/', function (req, res, next) {
-  Article.find(function (err, articles) {
-    if (err) {return next(err);}
+  app.use('*', function (req, res) {
+    //res.sendFile('index.html', { root: path.join(config.static)});
     res.render('index', {
-      title: 'Generator-Express MVC',
-      articles: articles
+      title: 'Spartan'
     });
   });
-});
+};

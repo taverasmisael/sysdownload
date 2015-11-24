@@ -1,0 +1,29 @@
+{
+  "version": "1.0.0",
+  "name": "Sysdownload",
+  "launch_path": "/index.html",
+  "description": "Sistema de Descarga para Intranet",
+  "icons": {
+    "128": "/images/touch/icon-128x128.png"
+  },
+  "developer": {
+    "name": "Misael Taveras",
+    "url": "https://github.com/taverasmisael"
+  },
+  "installs_allowed_from": [
+    "*"
+  ],
+  "default_locale": "es",
+  "permissions": {
+  },
+  "locales": {
+    "es": {
+      "name": "Sysdownload",
+      "description": "Sistema de Descarga para Intranet"
+    },
+    "en": {
+      "name": "Sysdownlad",
+      "description": "Intranet File Download Manager"
+    }
+  }
+}
