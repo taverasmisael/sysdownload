@@ -26,6 +26,7 @@ var $ = require('gulp-load-plugins')();
 var runSequence = require('run-sequence');
 var wiredep = require('wiredep').stream;
 var args = require('yargs').argv;
+var del = require('del');
 
 process.env.NODE_ENV = args.env || 'development';
 
@@ -133,4 +134,67 @@ gulp.task('develop', function() {
 
 gulp.task('default', function(cb) {
     runSequence('styles', ['wiredep', 'jshint', 'watch', 'develop'], cb);
+});
+
+
+/**
+ * Production Ready Tasks
+ */
+
+ // Clean output directory
+ gulp.task('clean', function (cb){
+    return del(['.tmp', './dist/*', '!dist/.git'], {dot: true}, cb).then(function (paths) {
+       if (paths.length) {
+         console.log('Deleted files/folders:\n', paths.join('\n'));
+         } else {
+           console.log('Nothing to see here');
+         }
+     });
+ });
+
+gulp.task('views', function (){
+  return gulp.src('app/views/index.jade')
+     .pipe($.jade({pretty: true}))
+     .pipe(gulp.dest('.tmp'));
+});
+
+// Concatenates all minified files
+ gulp.task('concatify',['views'], function (){
+   var assets = $.useref.assets({searchPath: './public/'});
+   return gulp.src('.tmp/*.html')
+         .pipe(assets)
+         .pipe($.if('*.js', $.uglify()))
+         .pipe($.if('*.css', $.csso()))
+         .pipe(assets.restore())
+         .pipe($.useref())
+         .pipe($.if('*.html', $.minifyHtml()))
+         .pipe(gulp.dest('dist'));
+ });
+
+ gulp.task('copy', function (){
+    return gulp.src(['public/*.txt', 'public/favicon.ico', 'public/manifest.*'])
+        .pipe(gulp.dest('dist'));
+ });
+
+ gulp.task('templates', function() {
+   return gulp.src('./public/templates/**/*.html')
+        .pipe($.minifyHtml())
+        .pipe(gulp.dest('./dist/templates'))
+        .pipe($.size({title: 'templates'}));
+ });
+
+gulp.task('fonts', function () {
+  return gulp.src(['./public/font/**', './public/components/materialize/font/**'])
+    .pipe(gulp.dest('./dist/font'))
+    .pipe($.size({title: 'fonts'}));
+});
+
+//Compresion de Imagenes
+gulp.task('images', function () {
+  return gulp.src('./public/images/**')
+    .pipe(gulp.dest('./dist/images'));
+});
+
+gulp.task('production', function (cb) {
+  runSequence('clean', ['templates', 'concatify'], ['fonts', 'images', 'copy'], cb)
 });
