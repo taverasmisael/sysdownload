@@ -75,7 +75,7 @@ public/programas
 *.sublime-project
 *.sublime-workspace
 *.cfg
-.tm
+.tmp
 
 #Ignore Private Configuration
 config/config.js
