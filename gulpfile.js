@@ -155,7 +155,8 @@ gulp.task('default', function(cb) {
 gulp.task('views', function (){
   return gulp.src('app/views/index.jade')
      .pipe($.jade({pretty: true}))
-     .pipe(gulp.dest('.tmp'));
+     .pipe(gulp.dest('.tmp'))
+     .pipe($.size({title: 'compile views'}));
 });
 
 // Concatenates all minified files
@@ -168,12 +169,14 @@ gulp.task('views', function (){
          .pipe(assets.restore())
          .pipe($.useref())
          .pipe($.if('*.html', $.minifyHtml()))
-         .pipe(gulp.dest('dist'));
+         .pipe(gulp.dest('dist'))
+         .pipe($.size({title: 'concatify'}));
  });
 
  gulp.task('copy', function (){
     return gulp.src(['public/*.txt', 'public/favicon.ico', 'public/manifest.*'])
-        .pipe(gulp.dest('dist'));
+        .pipe(gulp.dest('dist'))
+        .pipe($.size({title: 'config'}));
  });
 
  gulp.task('templates', function() {
@@ -192,7 +195,9 @@ gulp.task('fonts', function () {
 //Compresion de Imagenes
 gulp.task('images', function () {
   return gulp.src('./public/images/**')
-    .pipe(gulp.dest('./dist/images'));
+    .pipe($.imagemin())
+    .pipe(gulp.dest('./dist/images'))
+    .pipe($.size({title: 'images'}));
 });
 
 gulp.task('production', function (cb) {
