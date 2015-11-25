@@ -111,13 +111,7 @@ router.put('/api/programs/:programId', function(req, res) {
             res.send(err);
         }
         console.log(`Programa: "${programa}" actualizado`);
-        Program.find(function(err, programas) {
-            if (err) {
-                console.log(`Ocurrio un error Accediento a los programas: \n ${err}`);
-                res.send(err);
-            }
-            res.json(programas);
-        });
+        res.json(programa);
     });
 });
 
