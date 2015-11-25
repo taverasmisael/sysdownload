@@ -5,13 +5,11 @@
     Programas.$inject = ['$localStorage', '$sessionStorage', 'Upload', 'API'];
 
     function Programas($localStorage, $sesionStorage, Upload, API) {
-        var lProgramas = $localStorage.programs || _fillLocalPrograms(),
-            lCategories = $localStorage.categories || _fillLocalCategories();
+        var lCategories = $localStorage.categories || _fillLocalCategories();
         var ProgramasService = {
             // Getters
-            all: lProgramas,
+            all: getAll,
             categories: lCategories,
-            getAll: getAll,
             getById: getById,
             getCategories: lCategories,
             getByCategory: getByCategory,
@@ -26,7 +24,8 @@
 
         // Service Functionallity
         function getAll() {
-            // body...
+            console.log('Filling Local Programs :3');
+            return API.getAll().$promise;
         }
 
         function getById (programId) {
@@ -52,10 +51,7 @@
         }
 
         function update(programId, newData) {
-           return API.update({programId: programId, update: newData}).$promise
-                  .then(function () {
-                   lProgramas = _fillLocalPrograms();
-                  });
+           return API.update({programId: programId, update: newData}).$promise;
         }
 
         function remove(programId) {
@@ -64,16 +60,6 @@
             // This avoid JSHINT falsePositive
             // errors
             console.log(programId, ': This functionality isn\'t implemented yet! :c');
-        }
-
-
-        // Internal Functions
-        function _fillLocalPrograms() {
-            console.log('Filling Local Programs :3');
-            API.getAll().$promise.then(function (programs) {
-                $localStorage.programs = programs;
-                return programs;
-            }).catch(errHanddler);
         }
 
         function _fillLocalCategories () {

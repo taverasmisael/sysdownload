@@ -39,7 +39,7 @@
         update: {
           method: 'PUT',
           params: {programId: '@programId', update: '@update'},
-          isArray: true
+          isArray: false
         }
       };
 

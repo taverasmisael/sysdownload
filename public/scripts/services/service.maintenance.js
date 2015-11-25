@@ -17,6 +17,7 @@
       function addMasively () {
         // This is the most precious function and the most
         // DANGEROUS functionality. Use carefully
+        return $http.get('/api/maintenance/masive');
       }
     }
 })();
