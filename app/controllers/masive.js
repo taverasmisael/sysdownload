@@ -25,7 +25,7 @@ module.exports = function(req, res) {
     walker.on('file', checkFile);
     walker.on('directory', (root, dirStatsArray, next) => next());
     walker.on('errors', (root, nodeStatsArray, next) => {
-        console.error('Error de tipo: ', nodeStatsArray, +'en el sitio:" ' + root + '".');
+        console.error(`Error de tipo: ${nodeStatsArray} en el sitio:'  ${root} `);
         next();
     });
     walker.on('end', () => {
@@ -52,10 +52,10 @@ module.exports = function(req, res) {
                           added.counter += 1;
                           added.elems.push(newProgram);
                           next();
-                        }).catch((err) => console.log('Error Guardando El nuevo Programa ', err));
+                        }).catch((err) => console.log(`Error Guardando El nuevo Programa ${err}`));
                     }
-                }).catch((err) => console.log('Error Accediendo a la DB ', err));
-            }).catch((err) => console.log('Error obteniendo el nombre ', err));
+                }).catch((err) => console.log(`Error Accediendo a la DB ${err}`));
+            }).catch((err) => console.log(`Error obteniendo el nombre ${err}`));
     }
 
     function _getFilePath(dir, file) {
@@ -81,7 +81,7 @@ module.exports = function(req, res) {
         var nPrograma = new Programs();
         var relPath, fileMime, fileSize, fileName, fileExt, fileResume = 'Un Programa';
         fileMime = mime.lookup(filePath);
-        relPath = path.resolve(__dirname, '../../public/' + filePath);
+        relPath = path.resolve(__dirname, `../../public/${filePath}`);
         fs.stat(relPath, (err, stats) => {
           if (err) {
             console.log(err);

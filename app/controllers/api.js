@@ -34,7 +34,7 @@ module.exports = function (app) {
 router.get('/api/programs/', function (req, res) {
     Program.find(function(err, programas) {
         if (err) {
-            console.log('Ocurrio un error Accediento a los programas: \n', err);
+            console.log(`Ocurrio un error Accediento a los programas: ${err}`);
             res.send(err);
         }
         res.json(programas);
@@ -46,7 +46,7 @@ router.get('/api/programs/:programId', function (req, res) {
     var id = req.params.programId;
     Program.findById(id, function(err, programa) {
         if (err) {
-            console.log('Ocurrio un error encontrando el programa: "', id, '"\n ', err);
+            console.log(`Ocurrio un error encontrando el programa: "${id}": ${err}`);
             res.send(err);
         }
 
@@ -67,7 +67,7 @@ router.get('/api/category/:categoryName', function(req, res) {
       'info.category': catName
     }, function(err, programas) {
         if (err) {
-            console.log('Ocurrio un error al acceder a la categoria: "', catName, '"\n', err);
+            console.log(`Ocurrio un error al acceder a la categoria: "${catName}": err`);
             res.send(err);
         }
         res.json(programas);
@@ -84,14 +84,14 @@ router.post('/api/programs/', uploadFile, function(req, res) {
 
     Programa.save(function(err, newP) {
         if (err) {
-            console.log('Ocurrio un error salvando el programa (ya esta en el sistema de archivos) \n', err);
+            console.log(`Ocurrio un error salvando el programa (ya esta en el sistema de archivos) \n ${err}`);
             res.send(err);
         }
         console.log('Programa Creado');
 
         Program.findById(newP.id, function(err, nuevoPrograma) {
             if (err) {
-                console.log('Ocurrio un error Accediento al programa: \n', newP);
+                console.log(`Ocurrio un error Accediento al programa: \n ${newP}`);
                 res.send(err);
             }
             console.log(nuevoPrograma);
@@ -107,13 +107,13 @@ router.put('/api/programs/:programId', function(req, res) {
         update = req.body.update;
     Program.findByIdAndUpdate(id, {info: update}, function(err, programa) {
         if (err) {
-            console.log('Ocurrio un error actualizando el programa: "', id, '"\n', err);
+            console.log(`Ocurrio un error actualizando el programa: "${id}" \n ${err}`);
             res.send(err);
         }
-        console.log('Programa: ', programa, ' actualizado.');
+        console.log(`Programa: "${programa}" actualizado`);
         Program.find(function(err, programas) {
             if (err) {
-                console.log('Ocurrio un error Accediento a los programas: \n', err);
+                console.log(`Ocurrio un error Accediento a los programas: \n ${err}`);
                 res.send(err);
             }
             res.json(programas);
@@ -131,12 +131,12 @@ router.delete('/api/programs/:programId', function(req, res) {
         _id: id
     }, function(err) {
         if (err) {
-            console.log('Ocurrio un error elminando de la DB a: "', id, '"n', err);
+            console.log(`Ocurrio un error elminando de la DB a: "${id}": ${err}`);
             res.send(err);
         }
         Program.find(function(err, programas) {
             if (err) {
-                console.log('Ocurrio un error Accediento a los programas: \n', err);
+                console.log(`Ocurrio un error Accediento a los programas: \n ${err}`);
                 res.send(err);
             }
             res.json(programas);
