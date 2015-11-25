@@ -5,7 +5,8 @@ var express = require('express'),
     Program = mongoose.model('Program');
 
 var maintenance = require('./maintenance'),
-    uploadFile = require('../middlewares/upload');
+    uploadFile = require('../middlewares/upload'),
+    masive = require('./masive');
 
 var categoryList = [
     {
@@ -144,4 +145,5 @@ router.delete('/api/programs/:programId', function(req, res) {
 });
 
 
-router.get('/api/maintenance/info/', maintenance);
+router.get('/api/maintenance/info', maintenance);
+router.get('/api/maintenance/masive', masive);
