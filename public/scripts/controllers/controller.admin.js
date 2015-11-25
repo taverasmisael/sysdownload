@@ -10,6 +10,7 @@
         vm.crearPrograma = createProgram;
         vm.reloadServerinfo = getServerInfo;
         vm.editProgram = editProgram;
+        vm.runMasive = runMasive;
 
         // Funcionalidades del Controlador
         function createProgram(file, program) {
@@ -39,6 +40,16 @@
                 .then(function (res) { // res === response
                   vm.serverinfo = res.data;
                 });
+        }
+
+        function runMasive () {
+          Maintenance.masively()
+            .then(function (results) {
+              vm.masive = results.data;
+              getServerInfo();
+            }).catch(function (err) {
+            console.log(err);
+          });
         }
 
         // Funciones internas del Controlador
