@@ -78,18 +78,7 @@ module.exports = function(req, res) {
       var $promise;
 
       function save2DB (resolve, reject) {
-        var program = {
-          info: {
-            name: 'String',
-            resume: '',
-            category: ''
-          },
-          file: {
-            path: 'String',
-            mime: 'String',
-            size: 0
-          }
-        };
+        var nPrograma = new Programs();
         var relPath, fileMime, fileSize, fileName, fileExt, fileResume = 'Un Programa';
         fileMime = mime.lookup(filePath);
         relPath = path.resolve(__dirname, '../../public/' + filePath);
@@ -103,12 +92,15 @@ module.exports = function(req, res) {
           fileSize = stats.size;
 
           // Asing Properties to the Object
-          program.info.name = fileName;
-          program.info.resume = fileResume;
-          program.file.path = filePath;
-          program.file.mime = fileMime;
-          program.file.size = fileSize;
-          resolve(program);
+          nPrograma.info.name = fileName.charAt(0).toUpperCase() + fileName.slice(1).toLowerCase();
+          nPrograma.info.resume = fileResume;
+          nPrograma.file.path = filePath;
+          nPrograma.file.mime = fileMime;
+          nPrograma.file.size = fileSize;
+          nPrograma.save()
+            .then((program) => {
+              resolve(program);
+            });
         });
       }
 
