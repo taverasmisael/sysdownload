@@ -6,11 +6,11 @@
       </ul>
       <div class="card program">
           <a class="dropdown-button" href="#" data-activates="programsMenu{{program._id}}"><i class="material-icons small">more_horiz</i></a>
-          <a href="{{ program.file.path }}" target="_blank" download type="{{ program.file.mime }}" class="card-content valign-wrapper waves-effect" ng-click="HomeCtrl.download(program.info.name)">
+          <a href="{{ program.file.path }}" target="_blank" title="{{ ::program.info.name }}" download type="{{ program.file.mime }}" class="card-content valign-wrapper waves-effect" ng-click="HomeCtrl.download(program.info.name)">
               <div class="program-header valign-wrapper">
                   <h1 class="program-color"  ng-bind="::program.info.name | limitTo: 1"></h1>
                   <p class="file truncate">
-                    <strong class="truncate" ng-bind="::program.info.name"></strong>
+                    <strong class="truncate" ng-bind="::program.info.name | limitTo: 25"></strong>
                   </p>
               </div>
               <div class="program-body">
