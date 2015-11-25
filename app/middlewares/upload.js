@@ -19,7 +19,7 @@ module.exports = function (req, res, next) {
     serverTIMESTAMP = serverTIMESTAMP.valueOf();
     var programFile = files.files,
         tempPath = programFile.path,
-        targetPath = path.resolve(config.uploadDir + '/' + date + '/' + serverTIMESTAMP + '-' + programFile.name );
+        targetPath = path.resolve(`${config.uploadDir}/${date}/${programFile.name}`);
 
     req.body.programa = {};
     req.body.programa.name = fields['programa[name]'] || programFile.name;
@@ -29,7 +29,7 @@ module.exports = function (req, res, next) {
     req.fileInfo = {
       mime: programFile.type,
       size: programFile.size,
-      path: 'programas/' + date + '/' + path.basename(targetPath)
+      path: `programas/${date}/${path.basename(targetPath)}`
     };
 
     fs.stat(path.dirname(targetPath), function (err) {

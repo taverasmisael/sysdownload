@@ -4,7 +4,8 @@ module.exports = function (app) {
   app.use('*', function (req, res) {
     //res.sendFile('index.html', { root: path.join(config.static)});
     res.render('index', {
-      title: 'Spartan'
+      title: 'Sysdownload',
+      subtitle: 'Sistema de Gestion de Archivos'
     });
   });
 };
