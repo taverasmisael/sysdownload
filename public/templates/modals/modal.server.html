@@ -24,7 +24,7 @@
         <div class="divider"></div>
         <p ng-if="AdminCtrl.serverinfo.db"><strong>{{ AdminCtrl.serverinfo.db }}</strong> Entradas en la base de datos.</p>
         <p>Si crees que deberían haber más <a href="#" ng-click="AdminCtrl.runMasive()">usa esta herramienta</a></p>
-        <ul ng-if="AdminCtrl.masive">
+        <ul ng-if="AdminCtrl.masive && (AdminCtrl.masive.searched !== AdminCtrl.masive.found.counter)">
           <li>Se buscaron: {{ AdminCtrl.masive.searched }}</li>
           <li>Se encontraron: {{ AdminCtrl.masive.found.counter }} y hay {{ AdminCtrl.serverinfo.db }} en la base de Datos</li>
             <ul ng-if="AdminCtrl.masive.added.counter">
@@ -34,6 +34,9 @@
               </li>
             </ul>
         </ul>
+        <p ng-if="AdminCtrl.masive && (AdminCtrl.masive.searched === AdminCtrl.masive.found.counter)">
+          <strong>Todo parece estar bajo control <span class="material-icons">mood</span></strong>
+        </p>
       </div>
     </div>
     <div class="row">
