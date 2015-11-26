@@ -31,6 +31,8 @@ Se ha logrado gran parte de nuestro objetivo, se pueden agregar archivos al serv
 ### Configurando e Instalando
 En la carpeta `config` encontraremos el archivo `config.sample.js` lo renombramos a `config.js` y allí colocamos nuestra configuración.
 
+Si deseas cambiar las categorias a exponer, solo debes cambiarlas en el archivo `categories.js` dentro de la carpeta config
+
 **Para instalar**, abre tu terminal y escribe:
 
   <pre>
@@ -39,7 +41,7 @@ En la carpeta `config` encontraremos el archivo `config.sample.js` lo renombramo
     npm instal && bower install
   </pre>
 
-**Para correr en ambiente de desarrollo:** escribe `gulp` en tu terminal y correrá el servidor en el puerto elegido en el `config.js`
+**Para correr en ambiente de desarrollo:** escribe `gulp develop` en tu terminal y correrá el servidor en el puerto elegido en el `config.js`
 
 **Para correr en ambiente de produccion:** escribe `gulp develop --env=production` en tu terminal esto creará un servidor de la carpeta `dist` en el puerto elegido en el `config.js`
 

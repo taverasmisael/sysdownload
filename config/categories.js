@@ -1,5 +1,8 @@
 'use strict';
-
+/**
+ * Change This List to your own categories
+ * @type {Array}
+ */
 var categoryList = [
     {
       availableCategories:[
@@ -16,6 +19,9 @@ var categoryList = [
     }
 ];
 
+
+// Don't touch anything down here
+/* ------------------------------- */
 var i = 0, ac = categoryList[0].availableCategories, cat4Model = {type: String, enum: [], defaultl: categoryList[0].defaultCategory};
 
 for (i; i < ac.length; i += 1) {
