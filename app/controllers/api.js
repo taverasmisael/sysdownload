@@ -1,4 +1,6 @@
 'use strict';
+var config = require('../../config/config');
+
 var express = require('express'),
     router = express.Router(),
     mongoose = require('mongoose'),
@@ -7,22 +9,6 @@ var express = require('express'),
 var maintenance = require('./maintenance'),
     uploadFile = require('../middlewares/upload'),
     masive = require('./masive');
-
-var categoryList = [
-    {
-      availableCategories:[
-        {name: 'Os'},
-        {name: 'Crack'},
-        {name: 'Ide'},
-        {name: 'Seguridad'},
-        {name: 'Diseño'},
-        {name: 'Utilidades'},
-        {name: 'Documento'},
-        {name: 'Otros'}
-      ],
-      defaultCategory: 'Otros'
-    }
-];
 
 module.exports = function (app) {
     app.use(router);
@@ -56,7 +42,8 @@ router.get('/api/programs/:programId', function (req, res) {
 
 // Call the list of available categories
 router.get('/api/category', function(req, res) {
-    res.json(categoryList);
+    console.log(config.categories.catList);
+    res.json(config.categories.catList);
 });
 
 // Call an specific Category
