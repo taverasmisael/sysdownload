@@ -19,7 +19,7 @@ var ProgramSchema = new Schema({
   },
   meta: {
     // It should have a user field where we can put the uploader info
-    ratting: {type: Number, default: 0},
+    rating: {type: Number, default: 0},
     lastDownload: {type: Date, default: Date.now()}
   }
 });
