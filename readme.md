@@ -51,7 +51,7 @@ Si deseas cambiar las categorias a exponer, solo debes cambiarlas en el archivo 
 
 ## Excepciones conocidas por el momento
 
-* No se pueden subir archivos mayores a 500Mb al intentarlo, el servidor muere
+* No se pueden subir archivos mayores a 500Mb (o que pasen de unos pocos minutos subiendo) al intentarlo, el servidor muere
 * Aun no se eliminan los programas ni del server ni de la DB
 
 Si encuentras alguna otra excepción en el funcionamiento del software, puedes abrir un [issue](https://github.com/taverasmisael/sysdownload/issues) o bien déjamelo saber en [twitter](https://twitter.com/taverasmisael)
