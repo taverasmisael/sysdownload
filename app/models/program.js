@@ -1,5 +1,6 @@
 'use strict';
 // Example model
+var config = require('../../config/config');
 
 var mongoose = require('mongoose'),
   Schema = mongoose.Schema,
@@ -9,9 +10,7 @@ var ProgramSchema = new Schema({
   info: {
     name: {type: String},
     resume: {type: String},
-    category: {type: String, enum: [
-        'Sistema Operativo', 'Crack', 'Ide', 'Seguridad', 'Diseño', 'Utilidad', 'Documento', 'Otros'
-      ], default: 'Otros'},
+    category: config.categories.cat4Model,
   },
   file: {
     path: {type: String},
@@ -20,7 +19,7 @@ var ProgramSchema = new Schema({
   },
   meta: {
     // It should have a user field where we can put the uploader info
-    ratting: {type: Number, default: 0},
+    rating: {type: Number, default: 0},
     lastDownload: {type: Date, default: Date.now()}
   }
 });

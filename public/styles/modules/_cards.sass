@@ -9,6 +9,9 @@
       animation-delay: 0ms !important
     &.ng-leave
       @extend %fandeOutDown
+    &-color
+      font-family: "Roboto Slab"
+      padding-bottom: 0.8rem
     @each $num, $color in $card-colors
       &:nth-child(#{$num}n)
         animation-delay: unquote($num * 150 + "ms")
