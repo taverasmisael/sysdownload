@@ -24,7 +24,11 @@ Esta es una versión con súper poderes del proyecto de pruebas que fue [Spartan
 
 
 ## Versión 0.5
-Se ha logrado gran parte de nuestro objetivo, se pueden agregar archivos al servidor y descargarlos, aunque aún no se pueden eliminar.
+Se ha logrado gran parte de nuestro objetivo, se pueden agregar archivos al servidor y descargarlos, aunque aún no se pueden eliminar. Hemos logrado lo cometido pero tenemos algunas caracteristicas faltantes:
+
+* Aun no se eliminan los programas de la base de datos
+* El Masive, necesita una contra parte que elimine de la base de datos a los programas que no esten en el directorio de descarga
+* No hemos dado interes al agregar rating a los programas por descargas o valoralos
 
 ## Usando Sysdownload
 
